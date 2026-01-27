@@ -3725,6 +3725,15 @@
 				(hide yes)
 			)
 		)
+		(property "LCSC" "C2906986"
+			(at 246.38 83.82 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "d6e3a5c2-2415-43f3-9415-e8c28a23798f")
 		)
@@ -3793,6 +3802,15 @@
 			)
 		)
 		(property "Sim.Pin" "1=K 2=A"
+			(at 85.09 80.01 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C22371297"
 			(at 85.09 80.01 0)
 			(effects
 				(font
@@ -3937,6 +3955,15 @@
 				(hide yes)
 			)
 		)
+		(property "LCSC" "C23186"
+			(at 66.04 85.09 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "2b1e136a-6fa2-4234-aa46-ca02f29a39e9")
 		)
@@ -3999,6 +4026,15 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor"
+			(at 115.57 142.24 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C1525"
 			(at 115.57 142.24 0)
 			(effects
 				(font
@@ -4211,6 +4247,15 @@
 				(hide yes)
 			)
 		)
+		(property "LCSC" "C22843"
+			(at 246.38 95.25 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "7845b207-d70e-454a-8ddb-fdaf4fd2c22c")
 		)
@@ -4413,6 +4458,15 @@
 				(hide yes)
 			)
 		)
+		(property "LCSC" "C337699"
+			(at 259.08 95.25 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "c74166ce-f7a8-454b-9133-9b21129558e2")
 		)
@@ -4475,6 +4529,15 @@
 			)
 		)
 		(property "Description" "Single-cell battery"
+			(at 153.67 86.36 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C295747"
 			(at 153.67 86.36 0)
 			(effects
 				(font
@@ -4743,6 +4806,15 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor"
+			(at 173.99 83.82 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C14445"
 			(at 173.99 83.82 0)
 			(effects
 				(font
@@ -5020,6 +5092,15 @@
 				(hide yes)
 			)
 		)
+		(property "LCSC" "C22843"
+			(at 182.88 91.44 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "c326c293-fd26-4dad-a758-7d93743bda04")
 		)
@@ -5082,6 +5163,15 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor"
+			(at 160.02 85.09 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C68361"
 			(at 160.02 85.09 0)
 			(effects
 				(font
@@ -5160,6 +5250,15 @@
 				(hide yes)
 			)
 		)
+		(property "LCSC" "C23186"
+			(at 55.88 85.09 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "20d84ffe-6771-4cbb-a225-06b2dbf3e298")
 		)
@@ -5220,6 +5319,15 @@
 			)
 		)
 		(property "Description" "USB Power-Only 6P Type-C Receptacle connector"
+			(at 39.37 69.85 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C668623"
 			(at 39.37 69.85 0)
 			(effects
 				(font
@@ -5577,6 +5685,15 @@
 				(hide yes)
 			)
 		)
+		(property "LCSC" "C68361"
+			(at 100.33 142.24 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "bcd80b4a-be78-4bcc-bc10-3f6aba414059")
 		)
@@ -5836,6 +5953,15 @@
 			)
 		)
 		(property "Description" "Switch, single pole double throw"
+			(at 59.69 139.7 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C431547"
 			(at 59.69 139.7 0)
 			(effects
 				(font
@@ -6121,6 +6247,15 @@
 				(hide yes)
 			)
 		)
+		(property "LCSC" "C19171390"
+			(at 85.09 77.47 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "bb730df4-a565-40c6-8dc4-9c13392b5630")
 		)
@@ -6249,6 +6384,15 @@
 			)
 		)
 		(property "Description" "Resistor"
+			(at 133.35 87.63 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C22843"
 			(at 133.35 87.63 0)
 			(effects
 				(font
@@ -6457,6 +6601,15 @@
 				(hide yes)
 			)
 		)
+		(property "LCSC" "C5343973"
+			(at 213.36 63.5 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "dcae1c22-52dd-4032-8672-ebc0302dd817")
 		)
@@ -6593,6 +6746,15 @@
 				(hide yes)
 			)
 		)
+		(property "LCSC" "C919459"
+			(at 214.63 85.09 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "3"
 			(uuid "87d7679f-5a30-433f-9793-70adc6cb6e49")
 		)
@@ -6673,6 +6835,15 @@
 				(hide yes)
 			)
 		)
+		(property "LCSC" "C14445"
+			(at 259.08 71.12 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "4689841e-d9bc-497c-a41d-ac3db715d9a6")
 		)
@@ -6736,6 +6907,15 @@
 		)
 		(property "Description" "1A Standalone Linear Li-ion/LiPo single-cell battery charger, 4.2V ±1% charge voltage, VCC = 4.0..8.0V, SOIC-8 (SOP-8)"
 			(at 116.078 97.79 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C382139"
+			(at 115.57 77.47 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6898,6 +7078,15 @@
 				(hide yes)
 			)
 		)
+		(property "LCSC" "C22843"
+			(at 92.71 77.47 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "e306a95b-49ab-4a02-8ec5-a88f3c67084f")
 		)
@@ -7032,6 +7221,15 @@
 				(hide yes)
 			)
 		)
+		(property "LCSC" "C22843"
+			(at 99.06 80.01 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "4e9f86a1-e2c8-4619-9802-a47bef44bb28")
 		)
@@ -7093,6 +7291,15 @@
 			)
 		)
 		(property "Description" "Positive 60-250mA Low Dropout Regulator, Fixed Output, SOT-23"
+			(at 80.01 137.16 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C5446"
 			(at 80.01 137.16 0)
 			(effects
 				(font

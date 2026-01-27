@@ -1415,6 +1415,15 @@
 				(hide yes)
 			)
 		)
+		(property "LCSC" "C965555"
+			(at 233.68 48.26 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "c5a5fe4e-6192-42aa-9e74-4929c0ea7b61")
 		)
@@ -1856,6 +1865,15 @@
 			)
 		)
 		(property "Description" "RGB LED with integrated controller, 2.0 x 2.0 mm, 12 mA"
+			(at 55.88 48.26 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C965555"
 			(at 55.88 48.26 0)
 			(effects
 				(font
@@ -2533,6 +2551,15 @@
 				(hide yes)
 			)
 		)
+		(property "LCSC" "C965555"
+			(at 91.44 48.26 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "4028ad1d-3196-4f79-a787-f739a44b3d1d")
 		)
@@ -2644,6 +2671,15 @@
 			)
 		)
 		(property "Description" "RGB LED with integrated controller, 2.0 x 2.0 mm, 12 mA"
+			(at 198.12 48.26 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C965555"
 			(at 198.12 48.26 0)
 			(effects
 				(font
@@ -3431,6 +3467,15 @@
 				(hide yes)
 			)
 		)
+		(property "LCSC" "C965555"
+			(at 251.46 48.26 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "360668d4-4b78-4c08-a4e3-7d8a23b0de8e")
 		)
@@ -3652,6 +3697,15 @@
 			)
 		)
 		(property "Description" "RGB LED with integrated controller, 2.0 x 2.0 mm, 12 mA"
+			(at 144.78 48.26 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C965555"
 			(at 144.78 48.26 0)
 			(effects
 				(font
@@ -4109,6 +4163,15 @@
 				(hide yes)
 			)
 		)
+		(property "LCSC" "C965555"
+			(at 162.56 48.26 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "54f6d9f9-8a65-4d8a-957f-63f63b7d3315")
 		)
@@ -4228,6 +4291,15 @@
 				(hide yes)
 			)
 		)
+		(property "LCSC" "C965555"
+			(at 180.34 48.26 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "1828e9e7-03e3-4269-afd1-553e39c22afd")
 		)
@@ -4339,6 +4411,15 @@
 			)
 		)
 		(property "Description" "RGB LED with integrated controller, 2.0 x 2.0 mm, 12 mA"
+			(at 215.9 48.26 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C965555"
 			(at 215.9 48.26 0)
 			(effects
 				(font
@@ -4576,6 +4657,15 @@
 				(hide yes)
 			)
 		)
+		(property "LCSC" "C965555"
+			(at 127 48.26 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "63202186-3baf-4caf-8bdf-87c9cd2ca391")
 		)
@@ -4695,6 +4785,15 @@
 				(hide yes)
 			)
 		)
+		(property "LCSC" "C965555"
+			(at 73.66 48.26 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "63a2b71e-047c-4266-99d4-e707a87816f4")
 		)
@@ -4806,6 +4905,15 @@
 			)
 		)
 		(property "Description" "RGB LED with integrated controller, 2.0 x 2.0 mm, 12 mA"
+			(at 109.22 48.26 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C965555"
 			(at 109.22 48.26 0)
 			(effects
 				(font
