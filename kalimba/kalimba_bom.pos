@@ -1,0 +1,5 @@
+Comment	Designator	Footprint	LCSC
+WS2812B-2020	"U21,U4,U7,U18,U19,U13,U15,U1,U14,U8,U11,U2,U20,U9,U12,U17,U6,U3,U10,U5,U16"	SMT_12B-2020_WDS-L	C965555
+4.5V	BT1	PinHeader_1x02_P2.54mm_Vertical	
+SW_SPDT	SW1	Molex_Micro-Fit_3.0_43650-0315_1x03_P3.00mm_Vertical	
+Conn_01x08	"J3,J2"	PinSocket_1x08_P2.54mm_Vertical	
