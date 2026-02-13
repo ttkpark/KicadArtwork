@@ -1,4 +1,7 @@
 (sym_lib_table
   (version 7)
   (lib (name "GH_LIBRARIES")(type "KiCad")(uri "C:/Users/parkg/Desktop/KicadArtwork/symbols/GH_LIBRARIES.kicad_sym")(options "")(descr ""))
+  (lib (name "TPS61023DRLR")(type "KiCad")(uri "C:/Users/parkg/Desktop/KicadArtwork/ul_TPS61023DRLR/KiCADv6/TPS61023DRLR.kicad_sym")(options "")(descr ""))
+  (lib (name "2026-02-13_16-55-40")(type "KiCad")(uri "C:/Users/parkg/Desktop/KicadArtwork/ul_EPM3064ALC44-10/KiCADv6/2026-02-13_16-55-40.kicad_sym")(options "")(descr ""))
+  (lib (name "2026-02-13_17-00-08")(type "KiCad")(uri "C:/Users/parkg/Desktop/KicadArtwork/ul_EPM3064ALC44-10N/KiCADv6/2026-02-13_17-00-08.kicad_sym")(options "")(descr ""))
 )
