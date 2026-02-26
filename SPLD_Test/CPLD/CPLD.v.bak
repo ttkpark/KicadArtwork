@@ -1,0 +1,8 @@
+module CPLD1 (
+    output wire test_out  // Pin Planner에서 28번 핀으로 할당할 포트
+);
+
+    // 28번 핀을 항상 High(1) 상태로 출력
+    assign test_out = 1'b1;
+
+endmodule

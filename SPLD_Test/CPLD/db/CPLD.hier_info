@@ -1,0 +1,5 @@
+|CPLD
+test_in => test_out.IN0
+test_out <= test_out.DB_MAX_OUTPUT_PORT_TYPE
+
+
