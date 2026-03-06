@@ -1,0 +1,40 @@
+### Footprint positions - created on 2026-03-06T14:00:55+0900 ###
+### Printed by KiCad version 9.0.4
+## Unit = mm, Angle = deg.
+## Side : top
+# Ref     Val           Package                               PosX       PosY       Rot  Side
+C1        100u          C_0402_1005Metric                 175.5000   -83.0000    0.0000  top
+D1        SS14          D_SMA                             175.0800   -95.2500   90.0000  top
+D2        SS14          D_SMA                             149.6060   -81.3750   90.0000  top
+J1        Conn_01x01    PinHeader_1x01_P2.54mm_Vertical   158.5700   -80.0100    0.0000  top
+J2        Conn_01x08    PinSocket_1x08_P2.54mm_Vertical   180.2200  -100.7000  180.0000  top
+J3        ESP32_Super   PinSocket_1x08_P2.54mm_Vertical   198.0000  -100.7000  180.0000  top
+J4        TP4056        PinSocket_1x09_P2.54mm_Vertical   154.7600   -80.0100    0.0000  top
+J5        Conn_01x01    PinHeader_1x01_P2.54mm_Vertical   166.1900   -80.0100    0.0000  top
+J6        Conn_01x09    PinSocket_1x09_P2.54mm_Vertical   170.0000   -80.0100    0.0000  top
+J7        BAT           PinHeader_1x02_P2.54mm_Vertical   149.1700   -92.0000  180.0000  top
+R1        1M            R_0402_1005Metric                 175.4900   -79.5000    0.0000  top
+R2        1M            R_0402_1005Metric                 175.4900   -81.4900    0.0000  top
+SW1       SW_SPDT       SK12D07VG4NSPA_CNK                198.5000   -51.0000   90.0000  top
+U1        WS2812B-2020  SMT_12B-2020_WDS-L                 79.0000   -35.0000   90.0000  top
+U2        WS2812B-2020  SMT_12B-2020_WDS-L                 85.2000   -39.0000   90.0000  top
+U3        WS2812B-2020  SMT_12B-2020_WDS-L                 91.4000   -43.0000   90.0000  top
+U4        WS2812B-2020  SMT_12B-2020_WDS-L                 97.6000   -47.0000   90.0000  top
+U5        WS2812B-2020  SMT_12B-2020_WDS-L                103.8000   -51.0000   90.0000  top
+U6        WS2812B-2020  SMT_12B-2020_WDS-L                110.0000   -55.0000   90.0000  top
+U7        WS2812B-2020  SMT_12B-2020_WDS-L                116.2000   -59.0000   90.0000  top
+U8        WS2812B-2020  SMT_12B-2020_WDS-L                122.4000   -63.0000   90.0000  top
+U9        WS2812B-2020  SMT_12B-2020_WDS-L                128.6000   -67.0000   90.0000  top
+U10       WS2812B-2020  SMT_12B-2020_WDS-L                134.8000   -71.0000   90.0000  top
+U11       WS2812B-2020  SMT_12B-2020_WDS-L                141.0000   -75.0000   90.0000  top
+U12       WS2812B-2020  SMT_12B-2020_WDS-L                147.2000   -69.0000   90.0000  top
+U13       WS2812B-2020  SMT_12B-2020_WDS-L                153.4000   -65.0000   90.0000  top
+U14       WS2812B-2020  SMT_12B-2020_WDS-L                159.6000   -61.0000   90.0000  top
+U15       WS2812B-2020  SMT_12B-2020_WDS-L                165.8000   -57.0000   90.0000  top
+U16       WS2812B-2020  SMT_12B-2020_WDS-L                172.0000   -53.0000   90.0000  top
+U17       WS2812B-2020  SMT_12B-2020_WDS-L                178.2000   -49.0000   90.0000  top
+U18       WS2812B-2020  SMT_12B-2020_WDS-L                184.4000   -45.0000   90.0000  top
+U19       WS2812B-2020  SMT_12B-2020_WDS-L                190.6000   -41.0000   90.0000  top
+U20       WS2812B-2020  SMT_12B-2020_WDS-L                196.8000   -37.0000   90.0000  top
+U21       WS2812B-2020  SMT_12B-2020_WDS-L                203.0000   -33.0000   90.0000  top
+## End

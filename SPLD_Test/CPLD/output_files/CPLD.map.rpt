@@ -1,5 +1,5 @@
 Analysis & Synthesis report for CPLD
-Tue Feb 24 11:42:49 2026
+Sat Mar 07 02:28:36 2026
 Quartus II 32-bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
 
 
@@ -13,7 +13,10 @@ Quartus II 32-bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edit
   5. Analysis & Synthesis Source Files Read
   6. Analysis & Synthesis Resource Usage Summary
   7. Analysis & Synthesis Resource Utilization by Entity
-  8. Analysis & Synthesis Messages
+  8. Parameter Settings for Inferred Entity Instance: lpm_counter:mux_div_rtl_0
+  9. Parameter Settings for Inferred Entity Instance: lpm_counter:debounce_cnt_rtl_0
+ 10. Parameter Settings for Inferred Entity Instance: lpm_add_sub:Add1
+ 11. Analysis & Synthesis Messages
 
 
 
@@ -39,13 +42,13 @@ applicable agreement for further details.
 +-------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                  ;
 +-----------------------------+-------------------------------------------------+
-; Analysis & Synthesis Status ; Successful - Tue Feb 24 11:42:49 2026           ;
+; Analysis & Synthesis Status ; Successful - Sat Mar 07 02:28:35 2026           ;
 ; Quartus II 32-bit Version   ; 13.0.1 Build 232 06/12/2013 SP 1 SJ Web Edition ;
 ; Revision Name               ; CPLD                                            ;
 ; Top-level Entity Name       ; CPLD                                            ;
 ; Family                      ; MAX3000A                                        ;
-; Total macrocells            ; 1                                               ;
-; Total pins                  ; 2                                               ;
+; Total macrocells            ; 50                                              ;
+; Total pins                  ; 21                                              ;
 +-----------------------------+-------------------------------------------------+
 
 
@@ -119,42 +122,148 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +----------------------------+--------+
 ; Processors                 ; Number ;
 +----------------------------+--------+
-; Number detected on machine ; 12     ;
+; Number detected on machine ; 16     ;
 ; Maximum allowed            ; 1      ;
 +----------------------------+--------+
 
 
-+---------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Source Files Read                                                                                                            ;
-+----------------------------------+-----------------+------------------------+-----------------------------------------------------------+---------+
-; File Name with User-Entered Path ; Used in Netlist ; File Type              ; File Name with Absolute Path                              ; Library ;
-+----------------------------------+-----------------+------------------------+-----------------------------------------------------------+---------+
-; CPLD.v                           ; yes             ; User Verilog HDL File  ; C:/Users/parkg/Desktop/KicadArtwork/SPLD_Test/CPLD/CPLD.v ;         ;
-+----------------------------------+-----------------+------------------------+-----------------------------------------------------------+---------+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                            ;
++----------------------------------+-----------------+------------------------+---------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type              ; File Name with Absolute Path                                              ; Library ;
++----------------------------------+-----------------+------------------------+---------------------------------------------------------------------------+---------+
+; CPLD.v                           ; yes             ; User Verilog HDL File  ; C:/Users/GH/Desktop/KicadArtwork/SPLD_Test/CPLD/CPLD.v                    ;         ;
+; lpm_counter.tdf                  ; yes             ; Megafunction           ; c:/altera/13.0sp1/quartus/libraries/megafunctions/lpm_counter.tdf         ;         ;
+; lpm_constant.inc                 ; yes             ; Megafunction           ; c:/altera/13.0sp1/quartus/libraries/megafunctions/lpm_constant.inc        ;         ;
+; lpm_decode.inc                   ; yes             ; Megafunction           ; c:/altera/13.0sp1/quartus/libraries/megafunctions/lpm_decode.inc          ;         ;
+; lpm_add_sub.inc                  ; yes             ; Megafunction           ; c:/altera/13.0sp1/quartus/libraries/megafunctions/lpm_add_sub.inc         ;         ;
+; cmpconst.inc                     ; yes             ; Megafunction           ; c:/altera/13.0sp1/quartus/libraries/megafunctions/cmpconst.inc            ;         ;
+; lpm_compare.inc                  ; yes             ; Megafunction           ; c:/altera/13.0sp1/quartus/libraries/megafunctions/lpm_compare.inc         ;         ;
+; lpm_counter.inc                  ; yes             ; Megafunction           ; c:/altera/13.0sp1/quartus/libraries/megafunctions/lpm_counter.inc         ;         ;
+; dffeea.inc                       ; yes             ; Megafunction           ; c:/altera/13.0sp1/quartus/libraries/megafunctions/dffeea.inc              ;         ;
+; alt_counter_stratix.inc          ; yes             ; Megafunction           ; c:/altera/13.0sp1/quartus/libraries/megafunctions/alt_counter_stratix.inc ;         ;
+; aglobal130.inc                   ; yes             ; Megafunction           ; c:/altera/13.0sp1/quartus/libraries/megafunctions/aglobal130.inc          ;         ;
+; lpm_add_sub.tdf                  ; yes             ; Megafunction           ; c:/altera/13.0sp1/quartus/libraries/megafunctions/lpm_add_sub.tdf         ;         ;
+; addcore.inc                      ; yes             ; Megafunction           ; c:/altera/13.0sp1/quartus/libraries/megafunctions/addcore.inc             ;         ;
+; look_add.inc                     ; yes             ; Megafunction           ; c:/altera/13.0sp1/quartus/libraries/megafunctions/look_add.inc            ;         ;
+; bypassff.inc                     ; yes             ; Megafunction           ; c:/altera/13.0sp1/quartus/libraries/megafunctions/bypassff.inc            ;         ;
+; altshift.inc                     ; yes             ; Megafunction           ; c:/altera/13.0sp1/quartus/libraries/megafunctions/altshift.inc            ;         ;
+; alt_stratix_add_sub.inc          ; yes             ; Megafunction           ; c:/altera/13.0sp1/quartus/libraries/megafunctions/alt_stratix_add_sub.inc ;         ;
+; addcore.tdf                      ; yes             ; Megafunction           ; c:/altera/13.0sp1/quartus/libraries/megafunctions/addcore.tdf             ;         ;
+; a_csnbuffer.inc                  ; yes             ; Megafunction           ; c:/altera/13.0sp1/quartus/libraries/megafunctions/a_csnbuffer.inc         ;         ;
+; a_csnbuffer.tdf                  ; yes             ; Megafunction           ; c:/altera/13.0sp1/quartus/libraries/megafunctions/a_csnbuffer.tdf         ;         ;
+; altshift.tdf                     ; yes             ; Megafunction           ; c:/altera/13.0sp1/quartus/libraries/megafunctions/altshift.tdf            ;         ;
++----------------------------------+-----------------+------------------------+---------------------------------------------------------------------------+---------+
 
 
-+---------------------------------------------+
-; Analysis & Synthesis Resource Usage Summary ;
-+----------------------+----------------------+
-; Resource             ; Usage                ;
-+----------------------+----------------------+
-; Logic cells          ; 1                    ;
-; Total registers      ; 0                    ;
-; I/O pins             ; 2                    ;
-; Maximum fan-out node ; test_in~1            ;
-; Maximum fan-out      ; 1                    ;
-; Total fan-out        ; 2                    ;
-; Average fan-out      ; 0.67                 ;
-+----------------------+----------------------+
++----------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary              ;
++----------------------+-----------------------------------+
+; Resource             ; Usage                             ;
++----------------------+-----------------------------------+
+; Logic cells          ; 50                                ;
+; Total registers      ; 20                                ;
+; I/O pins             ; 21                                ;
+; Shareable expanders  ; 7                                 ;
+; Parallel expanders   ; 15                                ;
+; Maximum fan-out node ; lpm_counter:mux_div_rtl_0|dffs[3] ;
+; Maximum fan-out      ; 24                                ;
+; Total fan-out        ; 380                               ;
+; Average fan-out      ; 4.87                              ;
++----------------------+-----------------------------------+
 
 
-+-------------------------------------------------------------------------------------+
-; Analysis & Synthesis Resource Utilization by Entity                                 ;
-+----------------------------+------------+------+---------------------+--------------+
-; Compilation Hierarchy Node ; Macrocells ; Pins ; Full Hierarchy Name ; Library Name ;
-+----------------------------+------------+------+---------------------+--------------+
-; |CPLD                      ; 1          ; 2    ; |CPLD               ; work         ;
-+----------------------------+------------+------+---------------------+--------------+
++---------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                           ;
++-------------------------------------+------------+------+--------------------------------------+--------------+
+; Compilation Hierarchy Node          ; Macrocells ; Pins ; Full Hierarchy Name                  ; Library Name ;
++-------------------------------------+------------+------+--------------------------------------+--------------+
+; |CPLD                               ; 50         ; 21   ; |CPLD                                ; work         ;
+;    |lpm_counter:debounce_cnt_rtl_0| ; 18         ; 0    ; |CPLD|lpm_counter:debounce_cnt_rtl_0 ; work         ;
+;    |lpm_counter:mux_div_rtl_0|      ; 5          ; 0    ; |CPLD|lpm_counter:mux_div_rtl_0      ; work         ;
++-------------------------------------+------------+------+--------------------------------------+--------------+
+
+
++----------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: lpm_counter:mux_div_rtl_0 ;
++------------------------+-------------------+-------------------------------+
+; Parameter Name         ; Value             ; Type                          ;
++------------------------+-------------------+-------------------------------+
+; AUTO_CARRY_CHAINS      ; ON                ; AUTO_CARRY                    ;
+; IGNORE_CARRY_BUFFERS   ; OFF               ; IGNORE_CARRY                  ;
+; AUTO_CASCADE_CHAINS    ; ON                ; AUTO_CASCADE                  ;
+; IGNORE_CASCADE_BUFFERS ; OFF               ; IGNORE_CASCADE                ;
+; LPM_WIDTH              ; 5                 ; Untyped                       ;
+; LPM_DIRECTION          ; UP                ; Untyped                       ;
+; LPM_MODULUS            ; 0                 ; Untyped                       ;
+; LPM_AVALUE             ; UNUSED            ; Untyped                       ;
+; LPM_SVALUE             ; UNUSED            ; Untyped                       ;
+; LPM_PORT_UPDOWN        ; PORT_CONNECTIVITY ; Untyped                       ;
+; DEVICE_FAMILY          ; MAX3000A          ; Untyped                       ;
+; CARRY_CHAIN            ; MANUAL            ; Untyped                       ;
+; CARRY_CHAIN_LENGTH     ; 48                ; CARRY_CHAIN_LENGTH            ;
+; NOT_GATE_PUSH_BACK     ; ON                ; NOT_GATE_PUSH_BACK            ;
+; CARRY_CNT_EN           ; SMART             ; Untyped                       ;
+; LABWIDE_SCLR           ; ON                ; Untyped                       ;
+; USE_NEW_VERSION        ; TRUE              ; Untyped                       ;
+; CBXI_PARAMETER         ; NOTHING           ; Untyped                       ;
++------------------------+-------------------+-------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++---------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: lpm_counter:debounce_cnt_rtl_0 ;
++------------------------+-------------------+------------------------------------+
+; Parameter Name         ; Value             ; Type                               ;
++------------------------+-------------------+------------------------------------+
+; AUTO_CARRY_CHAINS      ; ON                ; AUTO_CARRY                         ;
+; IGNORE_CARRY_BUFFERS   ; OFF               ; IGNORE_CARRY                       ;
+; AUTO_CASCADE_CHAINS    ; ON                ; AUTO_CASCADE                       ;
+; IGNORE_CASCADE_BUFFERS ; OFF               ; IGNORE_CASCADE                     ;
+; LPM_WIDTH              ; 8                 ; Untyped                            ;
+; LPM_DIRECTION          ; UP                ; Untyped                            ;
+; LPM_MODULUS            ; 0                 ; Untyped                            ;
+; LPM_AVALUE             ; UNUSED            ; Untyped                            ;
+; LPM_SVALUE             ; UNUSED            ; Untyped                            ;
+; LPM_PORT_UPDOWN        ; PORT_CONNECTIVITY ; Untyped                            ;
+; DEVICE_FAMILY          ; MAX3000A          ; Untyped                            ;
+; CARRY_CHAIN            ; MANUAL            ; Untyped                            ;
+; CARRY_CHAIN_LENGTH     ; 48                ; CARRY_CHAIN_LENGTH                 ;
+; NOT_GATE_PUSH_BACK     ; ON                ; NOT_GATE_PUSH_BACK                 ;
+; CARRY_CNT_EN           ; SMART             ; Untyped                            ;
+; LABWIDE_SCLR           ; ON                ; Untyped                            ;
+; USE_NEW_VERSION        ; TRUE              ; Untyped                            ;
+; CBXI_PARAMETER         ; NOTHING           ; Untyped                            ;
++------------------------+-------------------+------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: lpm_add_sub:Add1 ;
++------------------------+-------------+----------------------------+
+; Parameter Name         ; Value       ; Type                       ;
++------------------------+-------------+----------------------------+
+; LPM_WIDTH              ; 5           ; Untyped                    ;
+; LPM_REPRESENTATION     ; UNSIGNED    ; Untyped                    ;
+; LPM_DIRECTION          ; ADD         ; Untyped                    ;
+; ONE_INPUT_IS_CONSTANT  ; YES         ; Untyped                    ;
+; LPM_PIPELINE           ; 0           ; Untyped                    ;
+; MAXIMIZE_SPEED         ; 5           ; Untyped                    ;
+; REGISTERED_AT_END      ; 0           ; Untyped                    ;
+; OPTIMIZE_FOR_SPEED     ; 5           ; Untyped                    ;
+; USE_CS_BUFFERS         ; 1           ; Untyped                    ;
+; CARRY_CHAIN            ; MANUAL      ; Untyped                    ;
+; CARRY_CHAIN_LENGTH     ; 48          ; CARRY_CHAIN_LENGTH         ;
+; DEVICE_FAMILY          ; MAX3000A    ; Untyped                    ;
+; USE_WYS                ; OFF         ; Untyped                    ;
+; STYLE                  ; FAST        ; Untyped                    ;
+; CBXI_PARAMETER         ; add_sub_8ch ; Untyped                    ;
+; AUTO_CARRY_CHAINS      ; ON          ; AUTO_CARRY                 ;
+; IGNORE_CARRY_BUFFERS   ; OFF         ; IGNORE_CARRY               ;
+; AUTO_CASCADE_CHAINS    ; ON          ; AUTO_CASCADE               ;
+; IGNORE_CASCADE_BUFFERS ; OFF         ; IGNORE_CASCADE             ;
++------------------------+-------------+----------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
 +-------------------------------+
@@ -163,20 +272,62 @@ Parallel compilation was disabled, but you have multiple processors available. E
 Info: *******************************************************************
 Info: Running Quartus II 32-bit Analysis & Synthesis
     Info: Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
-    Info: Processing started: Tue Feb 24 11:42:49 2026
+    Info: Processing started: Sat Mar 07 02:28:34 2026
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off CPLD -c CPLD
 Warning (20028): Parallel compilation is not licensed and has been disabled
 Info (12021): Found 1 design units, including 1 entities, in source file cpld.v
     Info (12023): Found entity 1: CPLD
 Info (12127): Elaborating entity "CPLD" for the top level hierarchy
-Info (21057): Implemented 3 device resources after synthesis - the final resource count might be different
-    Info (21058): Implemented 1 input pins
-    Info (21059): Implemented 1 output pins
-    Info (21063): Implemented 1 macrocells
-Info: Quartus II 32-bit Analysis & Synthesis was successful. 0 errors, 1 warning
-    Info: Peak virtual memory: 372 megabytes
-    Info: Processing ended: Tue Feb 24 11:42:49 2026
-    Info: Elapsed time: 00:00:00
+Warning (10230): Verilog HDL assignment warning at CPLD.v(49): truncated value with size 32 to match size of target (8)
+Warning (10230): Verilog HDL assignment warning at CPLD.v(72): truncated value with size 32 to match size of target (5)
+Warning (10230): Verilog HDL assignment warning at CPLD.v(76): truncated value with size 32 to match size of target (5)
+Warning (10230): Verilog HDL assignment warning at CPLD.v(96): truncated value with size 5 to match size of target (4)
+Warning (10230): Verilog HDL assignment warning at CPLD.v(98): truncated value with size 5 to match size of target (4)
+Warning (10230): Verilog HDL assignment warning at CPLD.v(100): truncated value with size 5 to match size of target (4)
+Warning (10230): Verilog HDL assignment warning at CPLD.v(102): truncated value with size 5 to match size of target (4)
+Warning (10230): Verilog HDL assignment warning at CPLD.v(111): truncated value with size 32 to match size of target (5)
+Info (19000): Inferred 2 megafunctions from design logic
+    Info (19001): Inferred lpm_counter megafunction (LPM_WIDTH=5) from the following logic: "mux_div_rtl_0"
+    Info (19001): Inferred lpm_counter megafunction (LPM_WIDTH=8) from the following logic: "debounce_cnt_rtl_0"
+Info (278001): Inferred 1 megafunctions from design logic
+    Info (278002): Inferred adder/subtractor megafunction ("lpm_add_sub") from the following logic: "Add1"
+Info (12130): Elaborated megafunction instantiation "lpm_counter:mux_div_rtl_0"
+Info (12133): Instantiated megafunction "lpm_counter:mux_div_rtl_0" with the following parameter:
+    Info (12134): Parameter "LPM_WIDTH" = "5"
+    Info (12134): Parameter "LPM_DIRECTION" = "UP"
+    Info (12134): Parameter "LPM_TYPE" = "LPM_COUNTER"
+Info (12130): Elaborated megafunction instantiation "lpm_counter:debounce_cnt_rtl_0"
+Info (12133): Instantiated megafunction "lpm_counter:debounce_cnt_rtl_0" with the following parameter:
+    Info (12134): Parameter "LPM_WIDTH" = "8"
+    Info (12134): Parameter "LPM_DIRECTION" = "UP"
+    Info (12134): Parameter "LPM_TYPE" = "LPM_COUNTER"
+Info (12130): Elaborated megafunction instantiation "lpm_add_sub:Add1"
+Info (12133): Instantiated megafunction "lpm_add_sub:Add1" with the following parameter:
+    Info (12134): Parameter "LPM_WIDTH" = "5"
+    Info (12134): Parameter "LPM_DIRECTION" = "ADD"
+    Info (12134): Parameter "LPM_REPRESENTATION" = "UNSIGNED"
+    Info (12134): Parameter "ONE_INPUT_IS_CONSTANT" = "YES"
+Info (12131): Elaborated megafunction instantiation "lpm_add_sub:Add1|addcore:adder", which is child of megafunction instantiation "lpm_add_sub:Add1"
+Info (12131): Elaborated megafunction instantiation "lpm_add_sub:Add1|addcore:adder|a_csnbuffer:oflow_node", which is child of megafunction instantiation "lpm_add_sub:Add1"
+Info (12131): Elaborated megafunction instantiation "lpm_add_sub:Add1|addcore:adder|a_csnbuffer:result_node", which is child of megafunction instantiation "lpm_add_sub:Add1"
+Info (12131): Elaborated megafunction instantiation "lpm_add_sub:Add1|addcore:adder|addcore:adder[0]", which is child of megafunction instantiation "lpm_add_sub:Add1"
+Info (12131): Elaborated megafunction instantiation "lpm_add_sub:Add1|addcore:adder|addcore:adder[0]|a_csnbuffer:oflow_node", which is child of megafunction instantiation "lpm_add_sub:Add1"
+Info (12131): Elaborated megafunction instantiation "lpm_add_sub:Add1|addcore:adder|addcore:adder[0]|a_csnbuffer:result_node", which is child of megafunction instantiation "lpm_add_sub:Add1"
+Info (12131): Elaborated megafunction instantiation "lpm_add_sub:Add1|altshift:result_ext_latency_ffs", which is child of megafunction instantiation "lpm_add_sub:Add1"
+Info (12131): Elaborated megafunction instantiation "lpm_add_sub:Add1|altshift:carry_ext_latency_ffs", which is child of megafunction instantiation "lpm_add_sub:Add1"
+Info (13014): Ignored 6 buffer(s)
+    Info (13019): Ignored 6 SOFT buffer(s)
+Warning (13024): Output pins are stuck at VCC or GND
+    Warning (13410): Pin "seg_dp" is stuck at VCC
+Info (21057): Implemented 78 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 4 input pins
+    Info (21059): Implemented 17 output pins
+    Info (21063): Implemented 50 macrocells
+    Info (21073): Implemented 7 shareable expanders
+Info: Quartus II 32-bit Analysis & Synthesis was successful. 0 errors, 11 warnings
+    Info: Peak virtual memory: 370 megabytes
+    Info: Processing ended: Sat Mar 07 02:28:36 2026
+    Info: Elapsed time: 00:00:02
     Info: Total CPU time (on all processors): 00:00:01
 
 

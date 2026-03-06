@@ -22,7 +22,12 @@ C_INCLUDES = \
 -I Drivers/STM32F0xx_HAL_Driver/Inc \
 -I Drivers/STM32F0xx_HAL_Driver/Inc/Legacy \
 -I Drivers/CMSIS/Device/ST/STM32F0xx/Include \
--I Drivers/CMSIS/Include
+-I Drivers/CMSIS/Include \
+-ICore/Inc \
+-IDrivers/STM32F0xx_HAL_Driver/Inc \
+-IDrivers/STM32F0xx_HAL_Driver/Inc/Legacy \
+-IDrivers/CMSIS/Device/ST/STM32F0xx/Include \
+-IDrivers/CMSIS/Include
 
 # Compiler flags
 CFLAGS = $(MCU) $(DEFS) $(C_INCLUDES) -Og -Wall -fdata-sections -ffunction-sections
@@ -51,7 +56,13 @@ Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_flash.c \
 Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_flash_ex.c \
 Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_exti.c \
 Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_i2c.c \
-Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_i2c_ex.c
+Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_i2c_ex.c \
+Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_spi.c \
+Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_spi_ex.c \
+Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_tim.c \
+Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_tim_ex.c \
+Core/Src/sysmem.c \
+Core/Src/syscalls.c
 
 ASM_SOURCES = Core/Startup/startup_stm32f030x6.s
 

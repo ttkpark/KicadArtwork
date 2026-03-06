@@ -1076,6 +1076,12 @@
     <group>
       <name>STM32F0xx_HAL_Driver</name>
       <file>
+        <name>$PROJ_DIR$/../Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_spi.c</name>
+      </file>
+      <file>
+        <name>$PROJ_DIR$/../Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_spi_ex.c</name>
+      </file>
+      <file>
         <name>$PROJ_DIR$/../Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_rcc.c</name>
       </file>
       <file>
@@ -1113,6 +1119,12 @@
       </file>
       <file>
         <name>$PROJ_DIR$/../Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_exti.c</name>
+      </file>
+      <file>
+        <name>$PROJ_DIR$/../Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_tim.c</name>
+      </file>
+      <file>
+        <name>$PROJ_DIR$/../Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_tim_ex.c</name>
       </file>
     </group>
     <group>

@@ -1,0 +1,12 @@
+Designator	Comment	Footprint	LCSC
+SW1	SW_SPDT	SK12D07VG4NSPA_CNK	C431547
+"R1,R2"	1M	Resistor_SMD:R_0402_1005Metric	
+"U1,U2,U3,U4,U5,U6,U7,U8,U9,U10,U11,U12,U13,U14,U15,U16,U17,U18,U19,U20,U21"	WS2812B-2020	GHLED:SMT_12B-2020_WDS-L	C965555
+D1	SS14	Diode_SMD:D_SMA	
+J6	Conn_01x09	Connector_PinSocket_2.54mm:PinSocket_1x09_P2.54mm_Vertical	
+J4	TP4056	Connector_PinSocket_2.54mm:PinSocket_1x09_P2.54mm_Vertical	
+J3	ESP32 Super	Connector_PinSocket_2.54mm:PinSocket_1x08_P2.54mm_Vertical	
+J2	Conn_01x08	Connector_PinSocket_2.54mm:PinSocket_1x08_P2.54mm_Vertical	
+J7	BAT	Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical	
+"J1,J5"	Conn_01x01	Connector_PinHeader_2.54mm:PinHeader_1x01_P2.54mm_Vertical	
+C1	100u	Capacitor_SMD:C_0402_1005Metric	

@@ -1,0 +1,9 @@
+Fitter Status : Successful - Mon Feb 23 16:58:10 2026
+Quartus II 32-bit Version : 13.0.1 Build 232 06/12/2013 SP 1 SJ Web Edition
+Revision Name : CPLD1
+Top-level Entity Name : CPLD1
+Family : MAX3000A
+Device : EPM3064ALC44-10
+Timing Models : Final
+Total macrocells : 1 / 64 ( 2 % )
+Total pins : 5 / 34 ( 15 % )

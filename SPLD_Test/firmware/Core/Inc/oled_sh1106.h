@@ -1,8 +1,13 @@
 /**
  * @file oled_sh1106.h
- * @brief 1.3" SPI OLED (M130-12864-7-V2.0) SH1106 driver - software SPI
- *        Pins: PA4=NSS, PA5=CLK, PA7=MOSI, PA8=RST, PA9=DC
+ * @brief 1.3" SPI OLED (M130-12864-7-V2.0) SH1106 driver - hardware SPI1
+ *        Pins: PA4=NSS, PA5=SCK, PA7=MOSI, PA8=RST, PA9=DC
+ *
+ * If only bottom line shows: add -DOLED_COM_REVERSE to CFLAGS in Makefile
  */
+#ifndef OLED_COM_REVERSE
+#define OLED_COM_REVERSE 0  /* 1 = use 0xC8 for COM scan (try if display inverted) */
+#endif
 #ifndef __OLED_SH1106_H
 #define __OLED_SH1106_H
 

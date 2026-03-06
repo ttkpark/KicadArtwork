@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\GH\AppData\Local\Temp\ccQ6boIu.s 			page 1
+ARM GAS  C:\Users\GH\AppData\Local\Temp\cc7qUb8L.s 			page 1
 
 
    1              		.cpu cortex-m0
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\GH\AppData\Local\Temp\ccQ6boIu.s 			page 1
   30:Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_pwr.c **** 
   31:Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_pwr.c **** /** @defgroup PWR PWR
   32:Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_pwr.c ****   * @brief PWR HAL module driver
-ARM GAS  C:\Users\GH\AppData\Local\Temp\ccQ6boIu.s 			page 2
+ARM GAS  C:\Users\GH\AppData\Local\Temp\cc7qUb8L.s 			page 2
 
 
   33:Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_pwr.c ****   * @{
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\GH\AppData\Local\Temp\ccQ6boIu.s 			page 1
   38 000a 1A61     		str	r2, [r3, #16]
   76:Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_pwr.c ****   __HAL_RCC_PWR_RELEASE_RESET();
   39              		.loc 1 76 3 view .LVU2
-ARM GAS  C:\Users\GH\AppData\Local\Temp\ccQ6boIu.s 			page 3
+ARM GAS  C:\Users\GH\AppData\Local\Temp\cc7qUb8L.s 			page 3
 
 
   40 000c 1A69     		ldr	r2, [r3, #16]
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\GH\AppData\Local\Temp\ccQ6boIu.s 			page 1
   83 0010 00700040 		.word	1073770496
   84              		.cfi_endproc
   85              	.LFE41:
-ARM GAS  C:\Users\GH\AppData\Local\Temp\ccQ6boIu.s 			page 4
+ARM GAS  C:\Users\GH\AppData\Local\Temp\cc7qUb8L.s 			page 4
 
 
   87              		.section	.text.HAL_PWR_DisableBkUpAccess,"ax",%progbits
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\GH\AppData\Local\Temp\ccQ6boIu.s 			page 1
  105:Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_pwr.c ****   */
  106:Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_pwr.c **** 
  107:Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_pwr.c **** /** @defgroup PWR_Exported_Functions_Group2 Peripheral Control functions 
-ARM GAS  C:\Users\GH\AppData\Local\Temp\ccQ6boIu.s 			page 5
+ARM GAS  C:\Users\GH\AppData\Local\Temp\cc7qUb8L.s 			page 5
 
 
  108:Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_pwr.c ****   *  @brief Low Power modes configuration functions
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\GH\AppData\Local\Temp\ccQ6boIu.s 			page 1
  162:Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_pwr.c ****       (+) Entry:
  163:Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_pwr.c ****           The Stop mode is entered using the HAL_PWR_EnterSTOPMode(PWR_MAINREGULATOR_ON, PWR_STOPEN
  164:Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_pwr.c ****              function with:
-ARM GAS  C:\Users\GH\AppData\Local\Temp\ccQ6boIu.s 			page 6
+ARM GAS  C:\Users\GH\AppData\Local\Temp\cc7qUb8L.s 			page 6
 
 
  165:Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_pwr.c ****           (++) Main regulator ON.
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\GH\AppData\Local\Temp\ccQ6boIu.s 			page 1
  219:Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_pwr.c ****   * @{
  220:Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_pwr.c ****   */
  221:Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_pwr.c **** 
-ARM GAS  C:\Users\GH\AppData\Local\Temp\ccQ6boIu.s 			page 7
+ARM GAS  C:\Users\GH\AppData\Local\Temp\cc7qUb8L.s 			page 7
 
 
  222:Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_pwr.c **** /**
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\GH\AppData\Local\Temp\ccQ6boIu.s 			page 1
  161              		.cfi_startproc
  162              		@ args = 0, pretend = 0, frame = 0
  163              		@ frame_needed = 0, uses_anonymous_args = 0
-ARM GAS  C:\Users\GH\AppData\Local\Temp\ccQ6boIu.s 			page 8
+ARM GAS  C:\Users\GH\AppData\Local\Temp\cc7qUb8L.s 			page 8
 
 
  164              		@ link register save eliminated.
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\GH\AppData\Local\Temp\ccQ6boIu.s 			page 1
  270:Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_pwr.c ****   assert_param(IS_PWR_REGULATOR(Regulator));
  196              		.loc 1 270 3 view .LVU21
  271:Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_pwr.c ****   assert_param(IS_PWR_SLEEP_ENTRY(SLEEPEntry));
-ARM GAS  C:\Users\GH\AppData\Local\Temp\ccQ6boIu.s 			page 9
+ARM GAS  C:\Users\GH\AppData\Local\Temp\cc7qUb8L.s 			page 9
 
 
  197              		.loc 1 271 3 view .LVU22
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\GH\AppData\Local\Temp\ccQ6boIu.s 			page 1
  232              		.syntax divided
  233              	@ 280 "Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_pwr.c" 1
  234 0016 30BF     		wfi
-ARM GAS  C:\Users\GH\AppData\Local\Temp\ccQ6boIu.s 			page 10
+ARM GAS  C:\Users\GH\AppData\Local\Temp\cc7qUb8L.s 			page 10
 
 
  235              	@ 0 "" 2
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\GH\AppData\Local\Temp\ccQ6boIu.s 			page 1
  313:Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_pwr.c **** 
  314:Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_pwr.c ****   /* Check the parameters */
  315:Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_pwr.c ****   assert_param(IS_PWR_REGULATOR(Regulator));
-ARM GAS  C:\Users\GH\AppData\Local\Temp\ccQ6boIu.s 			page 11
+ARM GAS  C:\Users\GH\AppData\Local\Temp\cc7qUb8L.s 			page 11
 
 
  268              		.loc 1 315 3 view .LVU36
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\GH\AppData\Local\Temp\ccQ6boIu.s 			page 1
  335:Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_pwr.c ****   {
  336:Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_pwr.c ****     /* Request Wait For Interrupt */
  337:Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_pwr.c ****     __WFI();
-ARM GAS  C:\Users\GH\AppData\Local\Temp\ccQ6boIu.s 			page 12
+ARM GAS  C:\Users\GH\AppData\Local\Temp\cc7qUb8L.s 			page 12
 
 
  338:Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_pwr.c ****   }
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\GH\AppData\Local\Temp\ccQ6boIu.s 			page 1
  344              	.L26:
  345 0034 00700040 		.word	1073770496
  346 0038 00ED00E0 		.word	-536810240
-ARM GAS  C:\Users\GH\AppData\Local\Temp\ccQ6boIu.s 			page 13
+ARM GAS  C:\Users\GH\AppData\Local\Temp\cc7qUb8L.s 			page 13
 
 
  347              		.cfi_endproc
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\GH\AppData\Local\Temp\ccQ6boIu.s 			page 1
  375:Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_pwr.c ****   __force_stores();
  376:Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_pwr.c **** #endif
  377:Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_pwr.c ****   /* Request Wait For Interrupt */
-ARM GAS  C:\Users\GH\AppData\Local\Temp\ccQ6boIu.s 			page 14
+ARM GAS  C:\Users\GH\AppData\Local\Temp\cc7qUb8L.s 			page 14
 
 
  378:Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_pwr.c ****   __WFI();
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\GH\AppData\Local\Temp\ccQ6boIu.s 			page 1
  418 000a 7047     		bx	lr
  419              	.L33:
  420              		.align	2
-ARM GAS  C:\Users\GH\AppData\Local\Temp\ccQ6boIu.s 			page 15
+ARM GAS  C:\Users\GH\AppData\Local\Temp\cc7qUb8L.s 			page 15
 
 
  421              	.L32:
@@ -898,7 +898,7 @@ ARM GAS  C:\Users\GH\AppData\Local\Temp\ccQ6boIu.s 			page 1
  408:Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_pwr.c **** 
  409:Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_pwr.c **** 
  410:Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_pwr.c **** /**
-ARM GAS  C:\Users\GH\AppData\Local\Temp\ccQ6boIu.s 			page 16
+ARM GAS  C:\Users\GH\AppData\Local\Temp\cc7qUb8L.s 			page 16
 
 
  411:Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_pwr.c ****   * @brief Enables CORTEX M4 SEVONPEND bit. 
@@ -958,7 +958,7 @@ ARM GAS  C:\Users\GH\AppData\Local\Temp\ccQ6boIu.s 			page 1
  432:Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_pwr.c ****   CLEAR_BIT(SCB->SCR, ((uint32_t)SCB_SCR_SEVONPEND_Msk));
  500              		.loc 1 432 3 view .LVU78
  501 0000 024A     		ldr	r2, .L41
-ARM GAS  C:\Users\GH\AppData\Local\Temp\ccQ6boIu.s 			page 17
+ARM GAS  C:\Users\GH\AppData\Local\Temp\cc7qUb8L.s 			page 17
 
 
  502 0002 1369     		ldr	r3, [r2, #16]
@@ -981,46 +981,46 @@ ARM GAS  C:\Users\GH\AppData\Local\Temp\ccQ6boIu.s 			page 1
  519              		.file 3 "c:\\program files (x86)\\gnu arm embedded toolchain\\10 2021.10\\arm-none-eabi\\include\\
  520              		.file 4 "Drivers/CMSIS/Include/core_cm0.h"
  521              		.file 5 "Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f030x6.h"
-ARM GAS  C:\Users\GH\AppData\Local\Temp\ccQ6boIu.s 			page 18
+ARM GAS  C:\Users\GH\AppData\Local\Temp\cc7qUb8L.s 			page 18
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 stm32f0xx_hal_pwr.c
-C:\Users\GH\AppData\Local\Temp\ccQ6boIu.s:18     .text.HAL_PWR_DeInit:00000000 $t
-C:\Users\GH\AppData\Local\Temp\ccQ6boIu.s:24     .text.HAL_PWR_DeInit:00000000 HAL_PWR_DeInit
-C:\Users\GH\AppData\Local\Temp\ccQ6boIu.s:50     .text.HAL_PWR_DeInit:00000018 $d
-C:\Users\GH\AppData\Local\Temp\ccQ6boIu.s:56     .text.HAL_PWR_EnableBkUpAccess:00000000 $t
-C:\Users\GH\AppData\Local\Temp\ccQ6boIu.s:62     .text.HAL_PWR_EnableBkUpAccess:00000000 HAL_PWR_EnableBkUpAccess
-C:\Users\GH\AppData\Local\Temp\ccQ6boIu.s:83     .text.HAL_PWR_EnableBkUpAccess:00000010 $d
-C:\Users\GH\AppData\Local\Temp\ccQ6boIu.s:88     .text.HAL_PWR_DisableBkUpAccess:00000000 $t
-C:\Users\GH\AppData\Local\Temp\ccQ6boIu.s:94     .text.HAL_PWR_DisableBkUpAccess:00000000 HAL_PWR_DisableBkUpAccess
-C:\Users\GH\AppData\Local\Temp\ccQ6boIu.s:114    .text.HAL_PWR_DisableBkUpAccess:0000000c $d
-C:\Users\GH\AppData\Local\Temp\ccQ6boIu.s:120    .text.HAL_PWR_EnableWakeUpPin:00000000 $t
-C:\Users\GH\AppData\Local\Temp\ccQ6boIu.s:126    .text.HAL_PWR_EnableWakeUpPin:00000000 HAL_PWR_EnableWakeUpPin
-C:\Users\GH\AppData\Local\Temp\ccQ6boIu.s:146    .text.HAL_PWR_EnableWakeUpPin:0000000c $d
-C:\Users\GH\AppData\Local\Temp\ccQ6boIu.s:151    .text.HAL_PWR_DisableWakeUpPin:00000000 $t
-C:\Users\GH\AppData\Local\Temp\ccQ6boIu.s:157    .text.HAL_PWR_DisableWakeUpPin:00000000 HAL_PWR_DisableWakeUpPin
-C:\Users\GH\AppData\Local\Temp\ccQ6boIu.s:177    .text.HAL_PWR_DisableWakeUpPin:0000000c $d
-C:\Users\GH\AppData\Local\Temp\ccQ6boIu.s:182    .text.HAL_PWR_EnterSLEEPMode:00000000 $t
-C:\Users\GH\AppData\Local\Temp\ccQ6boIu.s:188    .text.HAL_PWR_EnterSLEEPMode:00000000 HAL_PWR_EnterSLEEPMode
-C:\Users\GH\AppData\Local\Temp\ccQ6boIu.s:242    .text.HAL_PWR_EnterSLEEPMode:0000001c $d
-C:\Users\GH\AppData\Local\Temp\ccQ6boIu.s:247    .text.HAL_PWR_EnterSTOPMode:00000000 $t
-C:\Users\GH\AppData\Local\Temp\ccQ6boIu.s:253    .text.HAL_PWR_EnterSTOPMode:00000000 HAL_PWR_EnterSTOPMode
-C:\Users\GH\AppData\Local\Temp\ccQ6boIu.s:345    .text.HAL_PWR_EnterSTOPMode:00000034 $d
-C:\Users\GH\AppData\Local\Temp\ccQ6boIu.s:351    .text.HAL_PWR_EnterSTANDBYMode:00000000 $t
-C:\Users\GH\AppData\Local\Temp\ccQ6boIu.s:357    .text.HAL_PWR_EnterSTANDBYMode:00000000 HAL_PWR_EnterSTANDBYMode
-C:\Users\GH\AppData\Local\Temp\ccQ6boIu.s:391    .text.HAL_PWR_EnterSTANDBYMode:00000018 $d
-C:\Users\GH\AppData\Local\Temp\ccQ6boIu.s:397    .text.HAL_PWR_EnableSleepOnExit:00000000 $t
-C:\Users\GH\AppData\Local\Temp\ccQ6boIu.s:403    .text.HAL_PWR_EnableSleepOnExit:00000000 HAL_PWR_EnableSleepOnExit
-C:\Users\GH\AppData\Local\Temp\ccQ6boIu.s:422    .text.HAL_PWR_EnableSleepOnExit:0000000c $d
-C:\Users\GH\AppData\Local\Temp\ccQ6boIu.s:427    .text.HAL_PWR_DisableSleepOnExit:00000000 $t
-C:\Users\GH\AppData\Local\Temp\ccQ6boIu.s:433    .text.HAL_PWR_DisableSleepOnExit:00000000 HAL_PWR_DisableSleepOnExit
-C:\Users\GH\AppData\Local\Temp\ccQ6boIu.s:452    .text.HAL_PWR_DisableSleepOnExit:0000000c $d
-C:\Users\GH\AppData\Local\Temp\ccQ6boIu.s:457    .text.HAL_PWR_EnableSEVOnPend:00000000 $t
-C:\Users\GH\AppData\Local\Temp\ccQ6boIu.s:463    .text.HAL_PWR_EnableSEVOnPend:00000000 HAL_PWR_EnableSEVOnPend
-C:\Users\GH\AppData\Local\Temp\ccQ6boIu.s:482    .text.HAL_PWR_EnableSEVOnPend:0000000c $d
-C:\Users\GH\AppData\Local\Temp\ccQ6boIu.s:487    .text.HAL_PWR_DisableSEVOnPend:00000000 $t
-C:\Users\GH\AppData\Local\Temp\ccQ6boIu.s:493    .text.HAL_PWR_DisableSEVOnPend:00000000 HAL_PWR_DisableSEVOnPend
-C:\Users\GH\AppData\Local\Temp\ccQ6boIu.s:512    .text.HAL_PWR_DisableSEVOnPend:0000000c $d
+C:\Users\GH\AppData\Local\Temp\cc7qUb8L.s:18     .text.HAL_PWR_DeInit:00000000 $t
+C:\Users\GH\AppData\Local\Temp\cc7qUb8L.s:24     .text.HAL_PWR_DeInit:00000000 HAL_PWR_DeInit
+C:\Users\GH\AppData\Local\Temp\cc7qUb8L.s:50     .text.HAL_PWR_DeInit:00000018 $d
+C:\Users\GH\AppData\Local\Temp\cc7qUb8L.s:56     .text.HAL_PWR_EnableBkUpAccess:00000000 $t
+C:\Users\GH\AppData\Local\Temp\cc7qUb8L.s:62     .text.HAL_PWR_EnableBkUpAccess:00000000 HAL_PWR_EnableBkUpAccess
+C:\Users\GH\AppData\Local\Temp\cc7qUb8L.s:83     .text.HAL_PWR_EnableBkUpAccess:00000010 $d
+C:\Users\GH\AppData\Local\Temp\cc7qUb8L.s:88     .text.HAL_PWR_DisableBkUpAccess:00000000 $t
+C:\Users\GH\AppData\Local\Temp\cc7qUb8L.s:94     .text.HAL_PWR_DisableBkUpAccess:00000000 HAL_PWR_DisableBkUpAccess
+C:\Users\GH\AppData\Local\Temp\cc7qUb8L.s:114    .text.HAL_PWR_DisableBkUpAccess:0000000c $d
+C:\Users\GH\AppData\Local\Temp\cc7qUb8L.s:120    .text.HAL_PWR_EnableWakeUpPin:00000000 $t
+C:\Users\GH\AppData\Local\Temp\cc7qUb8L.s:126    .text.HAL_PWR_EnableWakeUpPin:00000000 HAL_PWR_EnableWakeUpPin
+C:\Users\GH\AppData\Local\Temp\cc7qUb8L.s:146    .text.HAL_PWR_EnableWakeUpPin:0000000c $d
+C:\Users\GH\AppData\Local\Temp\cc7qUb8L.s:151    .text.HAL_PWR_DisableWakeUpPin:00000000 $t
+C:\Users\GH\AppData\Local\Temp\cc7qUb8L.s:157    .text.HAL_PWR_DisableWakeUpPin:00000000 HAL_PWR_DisableWakeUpPin
+C:\Users\GH\AppData\Local\Temp\cc7qUb8L.s:177    .text.HAL_PWR_DisableWakeUpPin:0000000c $d
+C:\Users\GH\AppData\Local\Temp\cc7qUb8L.s:182    .text.HAL_PWR_EnterSLEEPMode:00000000 $t
+C:\Users\GH\AppData\Local\Temp\cc7qUb8L.s:188    .text.HAL_PWR_EnterSLEEPMode:00000000 HAL_PWR_EnterSLEEPMode
+C:\Users\GH\AppData\Local\Temp\cc7qUb8L.s:242    .text.HAL_PWR_EnterSLEEPMode:0000001c $d
+C:\Users\GH\AppData\Local\Temp\cc7qUb8L.s:247    .text.HAL_PWR_EnterSTOPMode:00000000 $t
+C:\Users\GH\AppData\Local\Temp\cc7qUb8L.s:253    .text.HAL_PWR_EnterSTOPMode:00000000 HAL_PWR_EnterSTOPMode
+C:\Users\GH\AppData\Local\Temp\cc7qUb8L.s:345    .text.HAL_PWR_EnterSTOPMode:00000034 $d
+C:\Users\GH\AppData\Local\Temp\cc7qUb8L.s:351    .text.HAL_PWR_EnterSTANDBYMode:00000000 $t
+C:\Users\GH\AppData\Local\Temp\cc7qUb8L.s:357    .text.HAL_PWR_EnterSTANDBYMode:00000000 HAL_PWR_EnterSTANDBYMode
+C:\Users\GH\AppData\Local\Temp\cc7qUb8L.s:391    .text.HAL_PWR_EnterSTANDBYMode:00000018 $d
+C:\Users\GH\AppData\Local\Temp\cc7qUb8L.s:397    .text.HAL_PWR_EnableSleepOnExit:00000000 $t
+C:\Users\GH\AppData\Local\Temp\cc7qUb8L.s:403    .text.HAL_PWR_EnableSleepOnExit:00000000 HAL_PWR_EnableSleepOnExit
+C:\Users\GH\AppData\Local\Temp\cc7qUb8L.s:422    .text.HAL_PWR_EnableSleepOnExit:0000000c $d
+C:\Users\GH\AppData\Local\Temp\cc7qUb8L.s:427    .text.HAL_PWR_DisableSleepOnExit:00000000 $t
+C:\Users\GH\AppData\Local\Temp\cc7qUb8L.s:433    .text.HAL_PWR_DisableSleepOnExit:00000000 HAL_PWR_DisableSleepOnExit
+C:\Users\GH\AppData\Local\Temp\cc7qUb8L.s:452    .text.HAL_PWR_DisableSleepOnExit:0000000c $d
+C:\Users\GH\AppData\Local\Temp\cc7qUb8L.s:457    .text.HAL_PWR_EnableSEVOnPend:00000000 $t
+C:\Users\GH\AppData\Local\Temp\cc7qUb8L.s:463    .text.HAL_PWR_EnableSEVOnPend:00000000 HAL_PWR_EnableSEVOnPend
+C:\Users\GH\AppData\Local\Temp\cc7qUb8L.s:482    .text.HAL_PWR_EnableSEVOnPend:0000000c $d
+C:\Users\GH\AppData\Local\Temp\cc7qUb8L.s:487    .text.HAL_PWR_DisableSEVOnPend:00000000 $t
+C:\Users\GH\AppData\Local\Temp\cc7qUb8L.s:493    .text.HAL_PWR_DisableSEVOnPend:00000000 HAL_PWR_DisableSEVOnPend
+C:\Users\GH\AppData\Local\Temp\cc7qUb8L.s:512    .text.HAL_PWR_DisableSEVOnPend:0000000c $d
 
 NO UNDEFINED SYMBOLS

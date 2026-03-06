@@ -1,5 +1,43 @@
 |CPLD
-test_in => test_out.IN0
-test_out <= test_out.DB_MAX_OUTPUT_PORT_TYPE
+clk_8khz => mux_div[0].CLK
+clk_8khz => mux_div[1].CLK
+clk_8khz => mux_div[2].CLK
+clk_8khz => mux_div[3].CLK
+clk_8khz => mux_div[4].CLK
+clk_8khz => count[0].CLK
+clk_8khz => count[1].CLK
+clk_8khz => count[2].CLK
+clk_8khz => count[3].CLK
+clk_8khz => count[4].CLK
+clk_8khz => btn_prev.CLK
+clk_8khz => btn_state.CLK
+clk_8khz => debounce_cnt[0].CLK
+clk_8khz => debounce_cnt[1].CLK
+clk_8khz => debounce_cnt[2].CLK
+clk_8khz => debounce_cnt[3].CLK
+clk_8khz => debounce_cnt[4].CLK
+clk_8khz => debounce_cnt[5].CLK
+clk_8khz => debounce_cnt[6].CLK
+clk_8khz => debounce_cnt[7].CLK
+btn1 => btn_dn.IN0
+btn2 => comb.IN0
+btn4 => comb.IN0
+mcu_28 <= count[0].DB_MAX_OUTPUT_PORT_TYPE
+mcu_29 <= count[1].DB_MAX_OUTPUT_PORT_TYPE
+mcu_31 <= count[2].DB_MAX_OUTPUT_PORT_TYPE
+mcu_34 <= count[3].DB_MAX_OUTPUT_PORT_TYPE
+mcu_37 <= count[4].DB_MAX_OUTPUT_PORT_TYPE
+seg_a <= seg_a.DB_MAX_OUTPUT_PORT_TYPE
+seg_b <= seg_b.DB_MAX_OUTPUT_PORT_TYPE
+seg_c <= seg_c.DB_MAX_OUTPUT_PORT_TYPE
+seg_d <= seg_d.DB_MAX_OUTPUT_PORT_TYPE
+seg_e <= seg_e.DB_MAX_OUTPUT_PORT_TYPE
+seg_f <= seg_f.DB_MAX_OUTPUT_PORT_TYPE
+seg_g <= seg_g.DB_MAX_OUTPUT_PORT_TYPE
+seg_dp <= <VCC>
+com1 <= com1.DB_MAX_OUTPUT_PORT_TYPE
+com2 <= com2.DB_MAX_OUTPUT_PORT_TYPE
+com3 <= com3.DB_MAX_OUTPUT_PORT_TYPE
+com4 <= com4.DB_MAX_OUTPUT_PORT_TYPE
 
 

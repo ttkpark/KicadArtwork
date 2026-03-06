@@ -33,14 +33,19 @@ STM32F030K6와 CPLD, 1.3inch SPI OLED(M130-12864-7-V2.0) 연결을 정리한 문
 
 ## STM32 ↔ CPLD GPIO
 
+### CPLD 모니터 (5핀 입력)
 | STM32 핀 | CPLD 핀 | 용도 |
 |----------|---------|------|
-| PA2  | IO28 | CPLD와 GPIO |
-| PA3  | IO29 | CPLD와 GPIO |
-| PA10 | IO31 | CPLD와 GPIO |
-| PA11 | IO33 | CPLD와 GPIO |
-| PA12 | IO34 | CPLD와 GPIO |
-| PA15 | IO37 | CPLD와 GPIO |
+| PA2  | IO28 | 모니터 입력 |
+| PA3  | IO29 | 모니터 입력 |
+| PA10 | IO31 | 모니터 입력 |
+| PA12 | IO34 | 모니터 입력 |
+| PA15 | IO37 | 모니터 입력 |
+
+### CPLD 클럭 (8kHz 출력)
+| STM32 핀 | CPLD 핀 | 용도 |
+|----------|---------|------|
+| **PA11** (TIM1_CH4) | 클럭 입력 | 8kHz PWM, 50% 듀티 |
 
 ---
 

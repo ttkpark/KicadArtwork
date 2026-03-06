@@ -22,6 +22,8 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "oled_sh1106.h"
+#include "stm32f0xx.h"
+#include "stm32f0xx_hal_gpio_ex.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -40,6 +42,9 @@
 /* USER CODE END PM */
 
 /* Private variables ---------------------------------------------------------*/
+SPI_HandleTypeDef hspi1;
+
+TIM_HandleTypeDef htim1;
 
 /* USER CODE BEGIN PV */
 
@@ -47,6 +52,9 @@
 
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
+static void MX_GPIO_Init(void);
+static void MX_SPI1_Init(void);
+static void MX_TIM1_Init(void);
 /* USER CODE BEGIN PFP */
 
 /* USER CODE END PFP */
@@ -84,39 +92,33 @@ int main(void)
   /* USER CODE END SysInit */
 
   /* Initialize all configured peripherals */
+  MX_GPIO_Init();
+  MX_SPI1_Init();
+  MX_TIM1_Init();
   /* USER CODE BEGIN 2 */
-  /* CPLD monitor inputs: PA3->IO28, PA11->IO33, PA12->IO34 (PA3 temp for IO28) */
-  GPIO_InitTypeDef GPIO_InitStruct = {0};
-  __HAL_RCC_GPIOA_CLK_ENABLE();
-  GPIO_InitStruct.Pin   = GPIO_PIN_3 | GPIO_PIN_11 | GPIO_PIN_12;
-  GPIO_InitStruct.Mode  = GPIO_MODE_INPUT;
-  GPIO_InitStruct.Pull  = GPIO_NOPULL;
-  HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+  /* CPLD clock: TIM1_CH4 8kHz PWM (configured in CubeMX) */
+  HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_4);
 
   OLED_Init();
 
-  /* Layout: title, then 3 columns centered - label, circle, 0/1 */
-  /* Column centers: 24, 64, 104. Circle radius 8, center y=28. Label y=10, digit y=40 */
-  #define CPLD_CX0  24
-  #define CPLD_CX1  64
-  #define CPLD_CX2  104
-  #define CPLD_CY   28
-  #define CPLD_R    8
-  #define LABEL_Y   10
-  #define DIGIT_Y   40
-  #define BOX_X0    4
-  #define BOX_X1    44
-  #define BOX_X2    84
-  #define BOX_X3    124
-  #define BOX_Y0    18
-  #define BOX_Y1    52
+  /* Layout: 5 columns for monitor. Centers ~14,38,62,86,110 */
+  #define CPLD_N      5
+  #define CPLD_CX(i)  (14 + (i) * 24)
+  #define CPLD_CY     26
+  #define CPLD_R      5
+  #define LABEL_Y     10
+  #define DIGIT_Y     40
+  #define BOX_Y0      18
+  #define BOX_Y1      52
 
-  /* Static frame: border + title + labels */
+  /* Static frame: border + title + labels (28,29,31,34,37) - labels centered under icons */
   OLED_DrawRect(0, 0, OLED_WIDTH - 1, OLED_HEIGHT - 1);
-  OLED_DrawString(36, 0, "CPLD MON");
-  OLED_DrawString(14, LABEL_Y, "IO28");
-  OLED_DrawString(54, LABEL_Y, "IO33");
-  OLED_DrawString(94, LABEL_Y, "IO34");
+  OLED_DrawString(34, 0, "CPLD MON");  /* space between CPLD and MON */
+  OLED_DrawString(CPLD_CX(0) - 6, LABEL_Y, "28");  /* 4px right: was 4, now 8 */
+  OLED_DrawString(CPLD_CX(1) - 6, LABEL_Y, "29");  /* was 28, now 32 */
+  OLED_DrawString(CPLD_CX(2) - 6, LABEL_Y, "31");  /* was 52, now 56 */
+  OLED_DrawString(CPLD_CX(3) - 6, LABEL_Y, "34");  /* was 76, now 80 */
+  OLED_DrawString(CPLD_CX(4) - 6, LABEL_Y, "37");  /* was 100, now 104 */
   OLED_Refresh();
 
   /* USER CODE END 2 */
@@ -128,28 +130,22 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-    /* Read PA3, PA11, PA12 (CPLD IO28, IO33, IO34) */
-    GPIO_PinState s0 = HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_3);
-    GPIO_PinState s1 = HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_11);
-    GPIO_PinState s2 = HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_12);
+    GPIO_PinState s[CPLD_N];
+    s[0] = HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_2);
+    s[1] = HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_3);
+    s[2] = HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_10);
+    s[3] = HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_12);
+    s[4] = HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_15);
 
-    /* Clear circle + digit area for each column */
-    OLED_ClearRect(BOX_X0, BOX_Y0, BOX_X1, BOX_Y1);
-    OLED_ClearRect(BOX_X1 + 2, BOX_Y0, BOX_X2, BOX_Y1);
-    OLED_ClearRect(BOX_X2 + 2, BOX_Y0, BOX_X3, BOX_Y1);
-
-    /* Redraw circles: LOW = hollow, HIGH = filled */
-    OLED_DrawCircle(CPLD_CX0, CPLD_CY, CPLD_R, (s0 == GPIO_PIN_SET));
-    OLED_DrawCircle(CPLD_CX1, CPLD_CY, CPLD_R, (s1 == GPIO_PIN_SET));
-    OLED_DrawCircle(CPLD_CX2, CPLD_CY, CPLD_R, (s2 == GPIO_PIN_SET));
-
-    /* 0 or 1 below each circle (centered: 6px font, so -3 from center) */
-    OLED_DrawChar(CPLD_CX0 - 3, DIGIT_Y, (s0 == GPIO_PIN_SET) ? '1' : '0');
-    OLED_DrawChar(CPLD_CX1 - 3, DIGIT_Y, (s1 == GPIO_PIN_SET) ? '1' : '0');
-    OLED_DrawChar(CPLD_CX2 - 3, DIGIT_Y, (s2 == GPIO_PIN_SET) ? '1' : '0');
+    for (int i = 0; i < CPLD_N; i++) {
+      uint8_t cx = CPLD_CX(i);
+      OLED_ClearRect(cx - 11, BOX_Y0, cx + 11, BOX_Y1);
+      OLED_DrawCircle(cx, CPLD_CY, CPLD_R, (s[i] == GPIO_PIN_SET));
+      OLED_DrawChar(cx - 3, DIGIT_Y, (s[i] == GPIO_PIN_SET) ? '1' : '0');  /* 6px char: center at cx */
+    }
 
     OLED_Refresh();
-    HAL_Delay(80);
+    HAL_Delay(50);
   }
   /* USER CODE END 3 */
 }
@@ -187,6 +183,158 @@ void SystemClock_Config(void)
   {
     Error_Handler();
   }
+}
+
+/**
+  * @brief SPI1 Initialization Function
+  * @param None
+  * @retval None
+  */
+static void MX_SPI1_Init(void)
+{
+
+  /* USER CODE BEGIN SPI1_Init 0 */
+
+  /* USER CODE END SPI1_Init 0 */
+
+  /* USER CODE BEGIN SPI1_Init 1 */
+
+  /* USER CODE END SPI1_Init 1 */
+  /* SPI1 parameter configuration*/
+  hspi1.Instance = SPI1;
+  hspi1.Init.Mode = SPI_MODE_MASTER;
+  hspi1.Init.Direction = SPI_DIRECTION_2LINES;
+  hspi1.Init.DataSize = SPI_DATASIZE_8BIT;
+  hspi1.Init.CLKPolarity = SPI_POLARITY_LOW;
+  hspi1.Init.CLKPhase = SPI_PHASE_1EDGE;
+  hspi1.Init.NSS = SPI_NSS_SOFT;
+  hspi1.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_2;
+  hspi1.Init.FirstBit = SPI_FIRSTBIT_MSB;
+  hspi1.Init.TIMode = SPI_TIMODE_DISABLE;
+  hspi1.Init.CRCCalculation = SPI_CRCCALCULATION_DISABLE;
+  hspi1.Init.CRCPolynomial = 7;
+  hspi1.Init.CRCLength = SPI_CRC_LENGTH_DATASIZE;
+  hspi1.Init.NSSPMode = SPI_NSS_PULSE_ENABLE;
+  if (HAL_SPI_Init(&hspi1) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  /* USER CODE BEGIN SPI1_Init 2 */
+
+  /* USER CODE END SPI1_Init 2 */
+
+}
+
+/**
+  * @brief TIM1 Initialization Function
+  * @param None
+  * @retval None
+  */
+static void MX_TIM1_Init(void)
+{
+
+  /* USER CODE BEGIN TIM1_Init 0 */
+
+  /* USER CODE END TIM1_Init 0 */
+
+  TIM_ClockConfigTypeDef sClockSourceConfig = {0};
+  TIM_MasterConfigTypeDef sMasterConfig = {0};
+  TIM_OC_InitTypeDef sConfigOC = {0};
+  TIM_BreakDeadTimeConfigTypeDef sBreakDeadTimeConfig = {0};
+
+  /* USER CODE BEGIN TIM1_Init 1 */
+
+  /* USER CODE END TIM1_Init 1 */
+  htim1.Instance = TIM1;
+  htim1.Init.Prescaler = 0;
+  htim1.Init.CounterMode = TIM_COUNTERMODE_UP;
+  htim1.Init.Period = 999;
+  htim1.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
+  htim1.Init.RepetitionCounter = 0;
+  htim1.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
+  if (HAL_TIM_Base_Init(&htim1) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  sClockSourceConfig.ClockSource = TIM_CLOCKSOURCE_INTERNAL;
+  if (HAL_TIM_ConfigClockSource(&htim1, &sClockSourceConfig) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  if (HAL_TIM_PWM_Init(&htim1) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  sMasterConfig.MasterOutputTrigger = TIM_TRGO_RESET;
+  sMasterConfig.MasterSlaveMode = TIM_MASTERSLAVEMODE_DISABLE;
+  if (HAL_TIMEx_MasterConfigSynchronization(&htim1, &sMasterConfig) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  sConfigOC.OCMode = TIM_OCMODE_PWM1;
+  sConfigOC.Pulse = 500;
+  sConfigOC.OCPolarity = TIM_OCPOLARITY_HIGH;
+  sConfigOC.OCFastMode = TIM_OCFAST_DISABLE;
+  sConfigOC.OCIdleState = TIM_OCIDLESTATE_RESET;
+  sConfigOC.OCNIdleState = TIM_OCNIDLESTATE_RESET;
+  if (HAL_TIM_PWM_ConfigChannel(&htim1, &sConfigOC, TIM_CHANNEL_4) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  sBreakDeadTimeConfig.OffStateRunMode = TIM_OSSR_DISABLE;
+  sBreakDeadTimeConfig.OffStateIDLEMode = TIM_OSSI_DISABLE;
+  sBreakDeadTimeConfig.LockLevel = TIM_LOCKLEVEL_OFF;
+  sBreakDeadTimeConfig.DeadTime = 0;
+  sBreakDeadTimeConfig.BreakState = TIM_BREAK_DISABLE;
+  sBreakDeadTimeConfig.BreakPolarity = TIM_BREAKPOLARITY_HIGH;
+  sBreakDeadTimeConfig.AutomaticOutput = TIM_AUTOMATICOUTPUT_DISABLE;
+  if (HAL_TIMEx_ConfigBreakDeadTime(&htim1, &sBreakDeadTimeConfig) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  /* USER CODE BEGIN TIM1_Init 2 */
+
+  /* USER CODE END TIM1_Init 2 */
+  HAL_TIM_MspPostInit(&htim1);
+
+}
+
+/**
+  * @brief GPIO Initialization Function
+  * @param None
+  * @retval None
+  */
+static void MX_GPIO_Init(void)
+{
+  GPIO_InitTypeDef GPIO_InitStruct = {0};
+  /* USER CODE BEGIN MX_GPIO_Init_1 */
+
+  /* USER CODE END MX_GPIO_Init_1 */
+
+  /* GPIO Ports Clock Enable */
+  __HAL_RCC_GPIOA_CLK_ENABLE();
+
+  /*Configure GPIO pin Output Level */
+  HAL_GPIO_WritePin(GPIOA, OLED_NSS_Pin|OLED_RST_Pin|OLED_DC_Pin, GPIO_PIN_RESET);
+
+  /*Configure GPIO pins : CPLD_IO28_Pin CPLD_IO29_Pin CPLD_IO31_Pin CPLD_IO34_Pin
+                           CPLD_IO37_Pin */
+  GPIO_InitStruct.Pin = CPLD_IO28_Pin|CPLD_IO29_Pin|CPLD_IO31_Pin|CPLD_IO34_Pin
+                          |CPLD_IO37_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+
+  /*Configure GPIO pins : OLED_NSS_Pin OLED_RST_Pin OLED_DC_Pin */
+  GPIO_InitStruct.Pin = OLED_NSS_Pin|OLED_RST_Pin|OLED_DC_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+  HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+
+  /* USER CODE BEGIN MX_GPIO_Init_2 */
+
+  /* USER CODE END MX_GPIO_Init_2 */
 }
 
 /* USER CODE BEGIN 4 */

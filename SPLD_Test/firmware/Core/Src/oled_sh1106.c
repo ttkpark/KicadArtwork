@@ -1,21 +1,13 @@
 /**
  * @file oled_sh1106.c
- * @brief SH1106 128x64 SPI OLED driver - software SPI on PA4,5,7,8,9
+ * @brief SH1106 128x64 SPI OLED driver - uses HAL SPI from STM32CubeMX
+ *        Pins from main.h: OLED_NSS, OLED_RST, OLED_DC
  */
 #include "oled_sh1106.h"
 #include "main.h"
 
-/* Pin definitions: PA4=NSS, PA5=CLK, PA7=MOSI, PA8=RST, PA9=DC */
-#define OLED_NSS_PORT   GPIOA
-#define OLED_NSS_PIN    GPIO_PIN_4
-#define OLED_CLK_PORT   GPIOA
-#define OLED_CLK_PIN    GPIO_PIN_5
-#define OLED_MOSI_PORT  GPIOA
-#define OLED_MOSI_PIN   GPIO_PIN_7
-#define OLED_RST_PORT  GPIOA
-#define OLED_RST_PIN   GPIO_PIN_8
-#define OLED_DC_PORT   GPIOA
-#define OLED_DC_PIN    GPIO_PIN_9
+/* Use hspi1 from main.c (initialized by MX_SPI1_Init) */
+extern SPI_HandleTypeDef hspi1;
 
 #define OLED_CMD   0
 #define OLED_DATA  1
@@ -24,65 +16,50 @@
 static uint8_t s_fb[OLED_WIDTH * OLED_PAGES];
 
 static void DC(uint8_t cmd) {
-  HAL_GPIO_WritePin(OLED_DC_PORT, OLED_DC_PIN, cmd ? GPIO_PIN_SET : GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(OLED_DC_GPIO_Port, OLED_DC_Pin, cmd ? GPIO_PIN_SET : GPIO_PIN_RESET);
 }
 
 static void CS(uint8_t sel) {
-  HAL_GPIO_WritePin(OLED_NSS_PORT, OLED_NSS_PIN, sel ? GPIO_PIN_RESET : GPIO_PIN_SET);
-}
-
-static void SPI_Byte(uint8_t byte) {
-  for (int8_t i = 7; i >= 0; i--) {
-    HAL_GPIO_WritePin(OLED_CLK_PORT, OLED_CLK_PIN, GPIO_PIN_RESET);
-    HAL_GPIO_WritePin(OLED_MOSI_PORT, OLED_MOSI_PIN, (byte & (1u << i)) ? GPIO_PIN_SET : GPIO_PIN_RESET);
-    HAL_GPIO_WritePin(OLED_CLK_PORT, OLED_CLK_PIN, GPIO_PIN_SET);
-  }
+  HAL_GPIO_WritePin(OLED_NSS_GPIO_Port, OLED_NSS_Pin, sel ? GPIO_PIN_RESET : GPIO_PIN_SET);
 }
 
 static void WriteCmd(uint8_t cmd) {
   DC(OLED_CMD);
   CS(1);
-  SPI_Byte(cmd);
+  HAL_SPI_Transmit(&hspi1, &cmd, 1, 10);
   CS(0);
 }
 
-static void WriteData(uint8_t dat) {
+/* Send multiple data bytes in one CS transaction (required for page write) */
+static void WriteDataBurst(const uint8_t *data, uint16_t len) {
   DC(OLED_DATA);
   CS(1);
-  SPI_Byte(dat);
+  HAL_SPI_Transmit(&hspi1, (uint8_t *)data, len, 100);
   CS(0);
 }
 
 void OLED_Init(void) {
-  GPIO_InitTypeDef GPIO_InitStruct = {0};
-  __HAL_RCC_GPIOA_CLK_ENABLE();
-
-  GPIO_InitStruct.Pin   = OLED_NSS_PIN | OLED_CLK_PIN | OLED_MOSI_PIN | OLED_RST_PIN | OLED_DC_PIN;
-  GPIO_InitStruct.Mode  = GPIO_MODE_OUTPUT_PP;
-  GPIO_InitStruct.Pull  = GPIO_NOPULL;
-  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH;
-  HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
-
-  HAL_GPIO_WritePin(OLED_NSS_PORT, OLED_NSS_PIN, GPIO_PIN_SET);
-  HAL_GPIO_WritePin(OLED_RST_PORT, OLED_RST_PIN, GPIO_PIN_RESET);
+  /* RST pulse - GPIO initialized by MX_GPIO_Init */
+  HAL_GPIO_WritePin(OLED_NSS_GPIO_Port, OLED_NSS_Pin, GPIO_PIN_SET);
+  HAL_GPIO_WritePin(OLED_RST_GPIO_Port, OLED_RST_Pin, GPIO_PIN_RESET);
   HAL_Delay(10);
-  HAL_GPIO_WritePin(OLED_RST_PORT, OLED_RST_PIN, GPIO_PIN_SET);
+  HAL_GPIO_WritePin(OLED_RST_GPIO_Port, OLED_RST_Pin, GPIO_PIN_SET);
   HAL_Delay(10);
 
   WriteCmd(0xAE); /* display off */
-  WriteCmd(0x02); /* lower column start (SH1106 132-col: offset 2 for 128) */
-  WriteCmd(0x10); /* higher column start */
-  WriteCmd(0x40); /* display start line 0 */
-  WriteCmd(0xA1); /* segment remap (column 131 -> 0) */
-  WriteCmd(0xC8); /* reverse scan (COM63 -> COM0) */
-  WriteCmd(0xA6); /* normal display */
   WriteCmd(0xA8); WriteCmd(0x3F); /* multiplex 64-1 */
   WriteCmd(0xD3); WriteCmd(0x00); /* display offset */
+  WriteCmd(0x40); /* display start line 0 */
+  WriteCmd(0xA0); /* segment remap: 0xA0=SEG0->col0, 0xA1=flipped (was 0xA1) */
+  WriteCmd(0xC8); /* COM scan reversed (COM63->COM0): 0xC0=normal, 0xC8=flipped (was 0xC0) */
+  WriteCmd(0xDA); WriteCmd(0x12); /* COM config */
+  WriteCmd(0x81); WriteCmd(0x7F); /* contrast */
   WriteCmd(0xD5); WriteCmd(0x80); /* clock divide */
   WriteCmd(0xD9); WriteCmd(0x22); /* precharge */
-  WriteCmd(0xDA); WriteCmd(0x12); /* COM config */
   WriteCmd(0xDB); WriteCmd(0x20); /* Vcomh */
-  WriteCmd(0x81); WriteCmd(0x7F); /* contrast */
+  WriteCmd(0x8D); WriteCmd(0x14); /* charge pump enable (required for some 1.3" modules) */
+  WriteCmd(0x20); WriteCmd(0x02); /* page addressing mode */
+  WriteCmd(0xA6); /* normal display */
   WriteCmd(0xAF); /* display on */
 
   OLED_Clear();
@@ -107,13 +84,13 @@ void OLED_Refresh(void) {
     WriteCmd(0xB0 + page);
     WriteCmd(0x02);
     WriteCmd(0x10);
-    for (uint8_t col = 0; col < OLED_WIDTH; col++)
-      WriteData(s_fb[page * OLED_WIDTH + col]);
+    WriteDataBurst(&s_fb[page * OLED_WIDTH], OLED_WIDTH);
   }
 }
 
 void OLED_SetPixel(uint8_t x, uint8_t y, bool on) {
   if (x >= OLED_WIDTH || y >= OLED_HEIGHT) return;
+  x = OLED_WIDTH - 1 - x;  /* X position flip (display hardware offset) */
   uint8_t page = y / 8;
   uint8_t bit = y % 8;
   uint16_t idx = page * OLED_WIDTH + x;
@@ -257,6 +234,9 @@ void OLED_DrawChar(uint8_t x, uint8_t y, char c) {
 void OLED_DrawString(uint8_t x, uint8_t y, const char *s) {
   while (*s && x < OLED_WIDTH) {
     OLED_DrawChar(x, y, *s++);
+    /* fill 1px gap between chars with background */
+    for (uint8_t row = 0; row < FONT_H && y + row < OLED_HEIGHT; row++)
+      OLED_SetPixel(x + FONT_W, y + row, false);
     x += FONT_W + 1;
   }
 }

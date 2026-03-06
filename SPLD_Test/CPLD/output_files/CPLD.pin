@@ -61,43 +61,43 @@ CHIP  "CPLD"  ASSIGNED TO AN: EPM3064ALC44-10
 
 Pin Name/Usage               : Location  : Dir.   : I/O Standard      : Voltage : I/O Bank  : User Assignment
 -------------------------------------------------------------------------------------------------------------
-GND+                         : 1         :        :                   :         :           :                
-GND+                         : 2         :        :                   :         :           :                
+btn1                         : 1         : input  : 3.3-V LVTTL       :         :           : Y              
+btn2                         : 2         : input  : 3.3-V LVTTL       :         :           : Y              
 VCCINT                       : 3         : power  :                   : 3.3V    :           :                
-RESERVED_INPUT               : 4         :        :                   :         :           :                
-RESERVED_INPUT               : 5         :        :                   :         :           :                
-RESERVED_INPUT               : 6         :        :                   :         :           :                
+btn4                         : 4         : input  : 3.3-V LVTTL       :         :           : Y              
+seg_a                        : 5         : output : 3.3-V LVTTL       :         :           : Y              
+seg_b                        : 6         : output : 3.3-V LVTTL       :         :           : Y              
 TDI                          : 7         : input  : 3.3-V LVTTL       :         :           : N              
-RESERVED_INPUT               : 8         :        :                   :         :           :                
-RESERVED_INPUT               : 9         :        :                   :         :           :                
+seg_c                        : 8         : output : 3.3-V LVTTL       :         :           : Y              
+seg_d                        : 9         : output : 3.3-V LVTTL       :         :           : Y              
 GND                          : 10        : gnd    :                   :         :           :                
-RESERVED_INPUT               : 11        :        :                   :         :           :                
-RESERVED_INPUT               : 12        :        :                   :         :           :                
+seg_e                        : 11        : output : 3.3-V LVTTL       :         :           : Y              
+seg_f                        : 12        : output : 3.3-V LVTTL       :         :           : Y              
 TMS                          : 13        : input  : 3.3-V LVTTL       :         :           : N              
-RESERVED_INPUT               : 14        :        :                   :         :           :                
+seg_g                        : 14        : output : 3.3-V LVTTL       :         :           : Y              
 VCCIO                        : 15        : power  :                   : 3.3V    :           :                
-RESERVED_INPUT               : 16        :        :                   :         :           :                
+seg_dp                       : 16        : output : 3.3-V LVTTL       :         :           : Y              
 GND                          : 17        : gnd    :                   :         :           :                
-RESERVED_INPUT               : 18        :        :                   :         :           :                
-RESERVED_INPUT               : 19        :        :                   :         :           :                
-RESERVED_INPUT               : 20        :        :                   :         :           :                
-RESERVED_INPUT               : 21        :        :                   :         :           :                
+com1                         : 18        : output : 3.3-V LVTTL       :         :           : Y              
+com2                         : 19        : output : 3.3-V LVTTL       :         :           : Y              
+com3                         : 20        : output : 3.3-V LVTTL       :         :           : Y              
+com4                         : 21        : output : 3.3-V LVTTL       :         :           : Y              
 GND                          : 22        : gnd    :                   :         :           :                
 VCCINT                       : 23        : power  :                   : 3.3V    :           :                
-test_in                      : 24        : input  : 3.3-V LVTTL       :         :           : Y              
-test_out                     : 25        : output : 3.3-V LVTTL       :         :           : Y              
+RESERVED_INPUT               : 24        :        :                   :         :           :                
+RESERVED_INPUT               : 25        :        :                   :         :           :                
 RESERVED_INPUT               : 26        :        :                   :         :           :                
 RESERVED_INPUT               : 27        :        :                   :         :           :                
-RESERVED_INPUT               : 28        :        :                   :         :           :                
-RESERVED_INPUT               : 29        :        :                   :         :           :                
+mcu_28                       : 28        : output : 3.3-V LVTTL       :         :           : Y              
+mcu_29                       : 29        : output : 3.3-V LVTTL       :         :           : Y              
 GND                          : 30        : gnd    :                   :         :           :                
-RESERVED_INPUT               : 31        :        :                   :         :           :                
+mcu_31                       : 31        : output : 3.3-V LVTTL       :         :           : Y              
 TCK                          : 32        : input  : 3.3-V LVTTL       :         :           : N              
-RESERVED_INPUT               : 33        :        :                   :         :           :                
-RESERVED_INPUT               : 34        :        :                   :         :           :                
+clk_8khz                     : 33        : input  : 3.3-V LVTTL       :         :           : Y              
+mcu_34                       : 34        : output : 3.3-V LVTTL       :         :           : Y              
 VCCIO                        : 35        : power  :                   : 3.3V    :           :                
 GND                          : 36        : gnd    :                   :         :           :                
-RESERVED_INPUT               : 37        :        :                   :         :           :                
+mcu_37                       : 37        : output : 3.3-V LVTTL       :         :           : Y              
 TDO                          : 38        : output : 3.3-V LVTTL       :         :           : N              
 RESERVED_INPUT               : 39        :        :                   :         :           :                
 RESERVED_INPUT               : 40        :        :                   :         :           :                

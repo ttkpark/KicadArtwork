@@ -52,5 +52,24 @@ set_global_assignment -name MAX7000_DEVICE_IO_STANDARD "3.3-V LVTTL"
 set_global_assignment -name USE_CONFIGURATION_DEVICE ON
 set_global_assignment -name RESERVE_ALL_UNUSED_PINS_NO_OUTPUT_GND "AS INPUT TRI-STATED"
 set_global_assignment -name CDF_FILE output_files/Chain1.cdf
-set_location_assignment PIN_24 -to test_in
-set_location_assignment PIN_25 -to test_out
+set_location_assignment PIN_1 -to btn1
+set_location_assignment PIN_2 -to btn2
+set_location_assignment PIN_33 -to clk_8khz
+set_location_assignment PIN_4 -to btn4
+set_location_assignment PIN_18 -to com1
+set_location_assignment PIN_19 -to com2
+set_location_assignment PIN_20 -to com3
+set_location_assignment PIN_21 -to com4
+set_location_assignment PIN_28 -to mcu_28
+set_location_assignment PIN_29 -to mcu_29
+set_location_assignment PIN_31 -to mcu_31
+set_location_assignment PIN_34 -to mcu_34
+set_location_assignment PIN_37 -to mcu_37
+set_location_assignment PIN_5 -to seg_a
+set_location_assignment PIN_6 -to seg_b
+set_location_assignment PIN_8 -to seg_c
+set_location_assignment PIN_9 -to seg_d
+set_location_assignment PIN_16 -to seg_dp
+set_location_assignment PIN_11 -to seg_e
+set_location_assignment PIN_12 -to seg_f
+set_location_assignment PIN_14 -to seg_g

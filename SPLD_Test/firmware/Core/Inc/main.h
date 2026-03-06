@@ -49,6 +49,8 @@ extern "C" {
 
 /* USER CODE END EM */
 
+void HAL_TIM_MspPostInit(TIM_HandleTypeDef *htim);
+
 /* Exported functions prototypes ---------------------------------------------*/
 void Error_Handler(void);
 
@@ -57,6 +59,22 @@ void Error_Handler(void);
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
+#define CPLD_IO28_Pin GPIO_PIN_2
+#define CPLD_IO28_GPIO_Port GPIOA
+#define CPLD_IO29_Pin GPIO_PIN_3
+#define CPLD_IO29_GPIO_Port GPIOA
+#define OLED_NSS_Pin GPIO_PIN_4
+#define OLED_NSS_GPIO_Port GPIOA
+#define OLED_RST_Pin GPIO_PIN_8
+#define OLED_RST_GPIO_Port GPIOA
+#define OLED_DC_Pin GPIO_PIN_9
+#define OLED_DC_GPIO_Port GPIOA
+#define CPLD_IO31_Pin GPIO_PIN_10
+#define CPLD_IO31_GPIO_Port GPIOA
+#define CPLD_IO34_Pin GPIO_PIN_12
+#define CPLD_IO34_GPIO_Port GPIOA
+#define CPLD_IO37_Pin GPIO_PIN_15
+#define CPLD_IO37_GPIO_Port GPIOA
 
 /* USER CODE BEGIN Private defines */
 

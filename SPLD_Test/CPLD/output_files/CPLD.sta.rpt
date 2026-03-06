@@ -1,5 +1,5 @@
 TimeQuest Timing Analyzer report for CPLD
-Tue Feb 24 11:42:53 2026
+Sat Mar 07 02:28:39 2026
 Quartus II 32-bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
 
 
@@ -16,13 +16,19 @@ Quartus II 32-bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edit
   8. Recovery Summary
   9. Removal Summary
  10. Minimum Pulse Width Summary
- 11. Propagation Delay
- 12. Minimum Propagation Delay
- 13. Clock Transfers
- 14. Report TCCS
- 15. Report RSKM
- 16. Unconstrained Paths
- 17. TimeQuest Timing Analyzer Messages
+ 11. Setup: 'clk_8khz'
+ 12. Hold: 'clk_8khz'
+ 13. Minimum Pulse Width: 'clk_8khz'
+ 14. Setup Times
+ 15. Hold Times
+ 16. Clock to Output Times
+ 17. Minimum Clock to Output Times
+ 18. Setup Transfers
+ 19. Hold Transfers
+ 20. Report TCCS
+ 21. Report RSKM
+ 22. Unconstrained Paths
+ 23. TimeQuest Timing Analyzer Messages
 
 
 
@@ -64,33 +70,46 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +----------------------------+--------+
 ; Processors                 ; Number ;
 +----------------------------+--------+
-; Number detected on machine ; 12     ;
+; Number detected on machine ; 16     ;
 ; Maximum allowed            ; 1      ;
 +----------------------------+--------+
 
 
-----------
-; Clocks ;
-----------
-No clocks to report.
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Clocks                                                                                                                                                                               ;
++------------+------+--------+------------+-------+-------+------------+-----------+-------------+-------+--------+-----------+------------+----------+--------+--------+--------------+
+; Clock Name ; Type ; Period ; Frequency  ; Rise  ; Fall  ; Duty Cycle ; Divide by ; Multiply by ; Phase ; Offset ; Edge List ; Edge Shift ; Inverted ; Master ; Source ; Targets      ;
++------------+------+--------+------------+-------+-------+------------+-----------+-------------+-------+--------+-----------+------------+----------+--------+--------+--------------+
+; clk_8khz   ; Base ; 1.000  ; 1000.0 MHz ; 0.000 ; 0.500 ;            ;           ;             ;       ;        ;           ;            ;          ;        ;        ; { clk_8khz } ;
++------------+------+--------+------------+-------+-------+------------+-----------+-------------+-------+--------+-----------+------------+----------+--------+--------+--------------+
 
 
-----------------
-; Fmax Summary ;
-----------------
-No paths to report.
++-------------------------------------------------+
+; Fmax Summary                                    ;
++-----------+-----------------+------------+------+
+; Fmax      ; Restricted Fmax ; Clock Name ; Note ;
++-----------+-----------------+------------+------+
+; 84.03 MHz ; 84.03 MHz       ; clk_8khz   ;      ;
++-----------+-----------------+------------+------+
+This panel reports FMAX for every clock in the design, regardless of the user-specified clock periods.  FMAX is only computed for paths where the source and destination registers or ports are driven by the same clock.  Paths of different clocks, including generated clocks, are ignored.  For paths between a clock and its inversion, FMAX is computed as if the rising and falling edges are scaled along with FMAX, such that the duty cycle (in terms of a percentage) is maintained. Altera recommends that you always use clock constraints and other slack reports for sign-off analysis.
 
 
------------------
-; Setup Summary ;
------------------
-No paths to report.
++------------------------------------+
+; Setup Summary                      ;
++----------+---------+---------------+
+; Clock    ; Slack   ; End Point TNS ;
++----------+---------+---------------+
+; clk_8khz ; -10.900 ; -191.500      ;
++----------+---------+---------------+
 
 
-----------------
-; Hold Summary ;
-----------------
-No paths to report.
++----------------------------------+
+; Hold Summary                     ;
++----------+-------+---------------+
+; Clock    ; Slack ; End Point TNS ;
++----------+-------+---------------+
+; clk_8khz ; 5.800 ; 0.000         ;
++----------+-------+---------------+
 
 
 --------------------
@@ -105,34 +124,409 @@ No paths to report.
 No paths to report.
 
 
--------------------------------
-; Minimum Pulse Width Summary ;
--------------------------------
-No paths to report.
++-----------------------------------+
+; Minimum Pulse Width Summary       ;
++----------+--------+---------------+
+; Clock    ; Slack  ; End Point TNS ;
++----------+--------+---------------+
+; clk_8khz ; -3.500 ; -140.000      ;
++----------+--------+---------------+
 
 
-+------------------------------------------------------+
-; Propagation Delay                                    ;
-+------------+-------------+----+--------+--------+----+
-; Input Port ; Output Port ; RR ; RF     ; FR     ; FF ;
-+------------+-------------+----+--------+--------+----+
-; test_in    ; test_out    ;    ; 10.000 ; 10.000 ;    ;
-+------------+-------------+----+--------+--------+----+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Setup: 'clk_8khz'                                                                                                                                               ;
++---------+----------------------------------------+----------------------------------------+--------------+-------------+--------------+------------+------------+
+; Slack   ; From Node                              ; To Node                                ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
++---------+----------------------------------------+----------------------------------------+--------------+-------------+--------------+------------+------------+
+; -10.900 ; lpm_counter:debounce_cnt_rtl_0|dffs[0] ; lpm_counter:debounce_cnt_rtl_0|dffs[4] ; clk_8khz     ; clk_8khz    ; 1.000        ; 0.000      ; 9.000      ;
+; -10.900 ; lpm_counter:debounce_cnt_rtl_0|dffs[0] ; lpm_counter:debounce_cnt_rtl_0|dffs[7] ; clk_8khz     ; clk_8khz    ; 1.000        ; 0.000      ; 9.000      ;
+; -10.900 ; lpm_counter:debounce_cnt_rtl_0|dffs[4] ; lpm_counter:debounce_cnt_rtl_0|dffs[4] ; clk_8khz     ; clk_8khz    ; 1.000        ; 0.000      ; 9.000      ;
+; -10.900 ; lpm_counter:debounce_cnt_rtl_0|dffs[6] ; lpm_counter:debounce_cnt_rtl_0|dffs[7] ; clk_8khz     ; clk_8khz    ; 1.000        ; 0.000      ; 9.000      ;
+; -10.900 ; lpm_counter:debounce_cnt_rtl_0|dffs[3] ; lpm_counter:debounce_cnt_rtl_0|dffs[7] ; clk_8khz     ; clk_8khz    ; 1.000        ; 0.000      ; 9.000      ;
+; -10.900 ; lpm_counter:debounce_cnt_rtl_0|dffs[5] ; lpm_counter:debounce_cnt_rtl_0|dffs[7] ; clk_8khz     ; clk_8khz    ; 1.000        ; 0.000      ; 9.000      ;
+; -10.900 ; lpm_counter:debounce_cnt_rtl_0|dffs[4] ; lpm_counter:debounce_cnt_rtl_0|dffs[7] ; clk_8khz     ; clk_8khz    ; 1.000        ; 0.000      ; 9.000      ;
+; -10.900 ; lpm_counter:debounce_cnt_rtl_0|dffs[2] ; lpm_counter:debounce_cnt_rtl_0|dffs[7] ; clk_8khz     ; clk_8khz    ; 1.000        ; 0.000      ; 9.000      ;
+; -10.900 ; lpm_counter:debounce_cnt_rtl_0|dffs[1] ; lpm_counter:debounce_cnt_rtl_0|dffs[7] ; clk_8khz     ; clk_8khz    ; 1.000        ; 0.000      ; 9.000      ;
+; -10.900 ; lpm_counter:debounce_cnt_rtl_0|dffs[7] ; lpm_counter:debounce_cnt_rtl_0|dffs[7] ; clk_8khz     ; clk_8khz    ; 1.000        ; 0.000      ; 9.000      ;
+; -10.000 ; lpm_counter:debounce_cnt_rtl_0|dffs[7] ; lpm_counter:debounce_cnt_rtl_0|dffs[1] ; clk_8khz     ; clk_8khz    ; 1.000        ; 0.000      ; 8.100      ;
+; -10.000 ; lpm_counter:debounce_cnt_rtl_0|dffs[7] ; lpm_counter:debounce_cnt_rtl_0|dffs[2] ; clk_8khz     ; clk_8khz    ; 1.000        ; 0.000      ; 8.100      ;
+; -10.000 ; lpm_counter:debounce_cnt_rtl_0|dffs[3] ; lpm_counter:debounce_cnt_rtl_0|dffs[3] ; clk_8khz     ; clk_8khz    ; 1.000        ; 0.000      ; 8.100      ;
+; -10.000 ; btn_state                              ; lpm_counter:debounce_cnt_rtl_0|dffs[5] ; clk_8khz     ; clk_8khz    ; 1.000        ; 0.000      ; 8.100      ;
+; -10.000 ; btn_state                              ; lpm_counter:debounce_cnt_rtl_0|dffs[6] ; clk_8khz     ; clk_8khz    ; 1.000        ; 0.000      ; 8.100      ;
+; -10.000 ; lpm_counter:debounce_cnt_rtl_0|dffs[7] ; lpm_counter:debounce_cnt_rtl_0|dffs[0] ; clk_8khz     ; clk_8khz    ; 1.000        ; 0.000      ; 8.100      ;
+; -10.000 ; lpm_counter:debounce_cnt_rtl_0|dffs[3] ; lpm_counter:debounce_cnt_rtl_0|dffs[4] ; clk_8khz     ; clk_8khz    ; 1.000        ; 0.000      ; 8.100      ;
+; -10.000 ; lpm_counter:debounce_cnt_rtl_0|dffs[2] ; lpm_counter:debounce_cnt_rtl_0|dffs[4] ; clk_8khz     ; clk_8khz    ; 1.000        ; 0.000      ; 8.100      ;
+; -10.000 ; lpm_counter:debounce_cnt_rtl_0|dffs[1] ; lpm_counter:debounce_cnt_rtl_0|dffs[4] ; clk_8khz     ; clk_8khz    ; 1.000        ; 0.000      ; 8.100      ;
+; -10.000 ; lpm_counter:debounce_cnt_rtl_0|dffs[7] ; lpm_counter:debounce_cnt_rtl_0|dffs[4] ; clk_8khz     ; clk_8khz    ; 1.000        ; 0.000      ; 8.100      ;
+; -10.000 ; lpm_counter:debounce_cnt_rtl_0|dffs[6] ; lpm_counter:debounce_cnt_rtl_0|dffs[4] ; clk_8khz     ; clk_8khz    ; 1.000        ; 0.000      ; 8.100      ;
+; -10.000 ; lpm_counter:debounce_cnt_rtl_0|dffs[5] ; lpm_counter:debounce_cnt_rtl_0|dffs[4] ; clk_8khz     ; clk_8khz    ; 1.000        ; 0.000      ; 8.100      ;
+; -10.000 ; btn_state                              ; lpm_counter:debounce_cnt_rtl_0|dffs[7] ; clk_8khz     ; clk_8khz    ; 1.000        ; 0.000      ; 8.100      ;
+; -10.000 ; lpm_counter:debounce_cnt_rtl_0|dffs[6] ; lpm_counter:debounce_cnt_rtl_0|dffs[1] ; clk_8khz     ; clk_8khz    ; 1.000        ; 0.000      ; 8.100      ;
+; -10.000 ; lpm_counter:debounce_cnt_rtl_0|dffs[5] ; lpm_counter:debounce_cnt_rtl_0|dffs[1] ; clk_8khz     ; clk_8khz    ; 1.000        ; 0.000      ; 8.100      ;
+; -10.000 ; lpm_counter:debounce_cnt_rtl_0|dffs[4] ; lpm_counter:debounce_cnt_rtl_0|dffs[1] ; clk_8khz     ; clk_8khz    ; 1.000        ; 0.000      ; 8.100      ;
+; -10.000 ; lpm_counter:debounce_cnt_rtl_0|dffs[3] ; lpm_counter:debounce_cnt_rtl_0|dffs[1] ; clk_8khz     ; clk_8khz    ; 1.000        ; 0.000      ; 8.100      ;
+; -10.000 ; lpm_counter:debounce_cnt_rtl_0|dffs[2] ; lpm_counter:debounce_cnt_rtl_0|dffs[1] ; clk_8khz     ; clk_8khz    ; 1.000        ; 0.000      ; 8.100      ;
+; -10.000 ; lpm_counter:debounce_cnt_rtl_0|dffs[0] ; lpm_counter:debounce_cnt_rtl_0|dffs[1] ; clk_8khz     ; clk_8khz    ; 1.000        ; 0.000      ; 8.100      ;
+; -10.000 ; lpm_counter:debounce_cnt_rtl_0|dffs[1] ; lpm_counter:debounce_cnt_rtl_0|dffs[1] ; clk_8khz     ; clk_8khz    ; 1.000        ; 0.000      ; 8.100      ;
+; -10.000 ; lpm_counter:debounce_cnt_rtl_0|dffs[6] ; lpm_counter:debounce_cnt_rtl_0|dffs[2] ; clk_8khz     ; clk_8khz    ; 1.000        ; 0.000      ; 8.100      ;
+; -10.000 ; lpm_counter:debounce_cnt_rtl_0|dffs[5] ; lpm_counter:debounce_cnt_rtl_0|dffs[2] ; clk_8khz     ; clk_8khz    ; 1.000        ; 0.000      ; 8.100      ;
+; -10.000 ; lpm_counter:debounce_cnt_rtl_0|dffs[4] ; lpm_counter:debounce_cnt_rtl_0|dffs[2] ; clk_8khz     ; clk_8khz    ; 1.000        ; 0.000      ; 8.100      ;
+; -10.000 ; lpm_counter:debounce_cnt_rtl_0|dffs[3] ; lpm_counter:debounce_cnt_rtl_0|dffs[2] ; clk_8khz     ; clk_8khz    ; 1.000        ; 0.000      ; 8.100      ;
+; -10.000 ; lpm_counter:debounce_cnt_rtl_0|dffs[0] ; lpm_counter:debounce_cnt_rtl_0|dffs[2] ; clk_8khz     ; clk_8khz    ; 1.000        ; 0.000      ; 8.100      ;
+; -10.000 ; lpm_counter:debounce_cnt_rtl_0|dffs[1] ; lpm_counter:debounce_cnt_rtl_0|dffs[2] ; clk_8khz     ; clk_8khz    ; 1.000        ; 0.000      ; 8.100      ;
+; -10.000 ; lpm_counter:debounce_cnt_rtl_0|dffs[2] ; lpm_counter:debounce_cnt_rtl_0|dffs[2] ; clk_8khz     ; clk_8khz    ; 1.000        ; 0.000      ; 8.100      ;
+; -10.000 ; lpm_counter:debounce_cnt_rtl_0|dffs[2] ; lpm_counter:debounce_cnt_rtl_0|dffs[3] ; clk_8khz     ; clk_8khz    ; 1.000        ; 0.000      ; 8.100      ;
+; -10.000 ; lpm_counter:debounce_cnt_rtl_0|dffs[0] ; lpm_counter:debounce_cnt_rtl_0|dffs[3] ; clk_8khz     ; clk_8khz    ; 1.000        ; 0.000      ; 8.100      ;
+; -10.000 ; lpm_counter:debounce_cnt_rtl_0|dffs[1] ; lpm_counter:debounce_cnt_rtl_0|dffs[3] ; clk_8khz     ; clk_8khz    ; 1.000        ; 0.000      ; 8.100      ;
+; -10.000 ; lpm_counter:debounce_cnt_rtl_0|dffs[5] ; lpm_counter:debounce_cnt_rtl_0|dffs[5] ; clk_8khz     ; clk_8khz    ; 1.000        ; 0.000      ; 8.100      ;
+; -10.000 ; lpm_counter:debounce_cnt_rtl_0|dffs[1] ; lpm_counter:debounce_cnt_rtl_0|dffs[5] ; clk_8khz     ; clk_8khz    ; 1.000        ; 0.000      ; 8.100      ;
+; -10.000 ; lpm_counter:debounce_cnt_rtl_0|dffs[2] ; lpm_counter:debounce_cnt_rtl_0|dffs[5] ; clk_8khz     ; clk_8khz    ; 1.000        ; 0.000      ; 8.100      ;
+; -10.000 ; lpm_counter:debounce_cnt_rtl_0|dffs[3] ; lpm_counter:debounce_cnt_rtl_0|dffs[5] ; clk_8khz     ; clk_8khz    ; 1.000        ; 0.000      ; 8.100      ;
+; -10.000 ; lpm_counter:debounce_cnt_rtl_0|dffs[0] ; lpm_counter:debounce_cnt_rtl_0|dffs[5] ; clk_8khz     ; clk_8khz    ; 1.000        ; 0.000      ; 8.100      ;
+; -10.000 ; lpm_counter:debounce_cnt_rtl_0|dffs[4] ; lpm_counter:debounce_cnt_rtl_0|dffs[5] ; clk_8khz     ; clk_8khz    ; 1.000        ; 0.000      ; 8.100      ;
+; -10.000 ; lpm_counter:debounce_cnt_rtl_0|dffs[6] ; lpm_counter:debounce_cnt_rtl_0|dffs[6] ; clk_8khz     ; clk_8khz    ; 1.000        ; 0.000      ; 8.100      ;
+; -10.000 ; lpm_counter:debounce_cnt_rtl_0|dffs[1] ; lpm_counter:debounce_cnt_rtl_0|dffs[6] ; clk_8khz     ; clk_8khz    ; 1.000        ; 0.000      ; 8.100      ;
+; -10.000 ; lpm_counter:debounce_cnt_rtl_0|dffs[2] ; lpm_counter:debounce_cnt_rtl_0|dffs[6] ; clk_8khz     ; clk_8khz    ; 1.000        ; 0.000      ; 8.100      ;
+; -10.000 ; lpm_counter:debounce_cnt_rtl_0|dffs[3] ; lpm_counter:debounce_cnt_rtl_0|dffs[6] ; clk_8khz     ; clk_8khz    ; 1.000        ; 0.000      ; 8.100      ;
+; -10.000 ; lpm_counter:debounce_cnt_rtl_0|dffs[4] ; lpm_counter:debounce_cnt_rtl_0|dffs[6] ; clk_8khz     ; clk_8khz    ; 1.000        ; 0.000      ; 8.100      ;
+; -10.000 ; lpm_counter:debounce_cnt_rtl_0|dffs[0] ; lpm_counter:debounce_cnt_rtl_0|dffs[6] ; clk_8khz     ; clk_8khz    ; 1.000        ; 0.000      ; 8.100      ;
+; -10.000 ; lpm_counter:debounce_cnt_rtl_0|dffs[5] ; lpm_counter:debounce_cnt_rtl_0|dffs[6] ; clk_8khz     ; clk_8khz    ; 1.000        ; 0.000      ; 8.100      ;
+; -10.000 ; lpm_counter:debounce_cnt_rtl_0|dffs[6] ; lpm_counter:debounce_cnt_rtl_0|dffs[0] ; clk_8khz     ; clk_8khz    ; 1.000        ; 0.000      ; 8.100      ;
+; -10.000 ; lpm_counter:debounce_cnt_rtl_0|dffs[5] ; lpm_counter:debounce_cnt_rtl_0|dffs[0] ; clk_8khz     ; clk_8khz    ; 1.000        ; 0.000      ; 8.100      ;
+; -10.000 ; lpm_counter:debounce_cnt_rtl_0|dffs[4] ; lpm_counter:debounce_cnt_rtl_0|dffs[0] ; clk_8khz     ; clk_8khz    ; 1.000        ; 0.000      ; 8.100      ;
+; -10.000 ; lpm_counter:debounce_cnt_rtl_0|dffs[3] ; lpm_counter:debounce_cnt_rtl_0|dffs[0] ; clk_8khz     ; clk_8khz    ; 1.000        ; 0.000      ; 8.100      ;
+; -10.000 ; lpm_counter:debounce_cnt_rtl_0|dffs[2] ; lpm_counter:debounce_cnt_rtl_0|dffs[0] ; clk_8khz     ; clk_8khz    ; 1.000        ; 0.000      ; 8.100      ;
+; -10.000 ; lpm_counter:debounce_cnt_rtl_0|dffs[1] ; lpm_counter:debounce_cnt_rtl_0|dffs[0] ; clk_8khz     ; clk_8khz    ; 1.000        ; 0.000      ; 8.100      ;
+; -10.000 ; lpm_counter:debounce_cnt_rtl_0|dffs[0] ; lpm_counter:debounce_cnt_rtl_0|dffs[0] ; clk_8khz     ; clk_8khz    ; 1.000        ; 0.000      ; 8.100      ;
+; -9.300  ; count[0]                               ; count[1]                               ; clk_8khz     ; clk_8khz    ; 1.000        ; 0.000      ; 7.400      ;
+; -9.300  ; count[0]                               ; count[2]                               ; clk_8khz     ; clk_8khz    ; 1.000        ; 0.000      ; 7.400      ;
+; -9.300  ; count[1]                               ; count[2]                               ; clk_8khz     ; clk_8khz    ; 1.000        ; 0.000      ; 7.400      ;
+; -9.300  ; count[1]                               ; count[3]                               ; clk_8khz     ; clk_8khz    ; 1.000        ; 0.000      ; 7.400      ;
+; -9.300  ; count[0]                               ; count[3]                               ; clk_8khz     ; clk_8khz    ; 1.000        ; 0.000      ; 7.400      ;
+; -9.300  ; count[2]                               ; count[3]                               ; clk_8khz     ; clk_8khz    ; 1.000        ; 0.000      ; 7.400      ;
+; -9.300  ; count[2]                               ; count[4]                               ; clk_8khz     ; clk_8khz    ; 1.000        ; 0.000      ; 7.400      ;
+; -9.300  ; count[1]                               ; count[4]                               ; clk_8khz     ; clk_8khz    ; 1.000        ; 0.000      ; 7.400      ;
+; -9.300  ; count[0]                               ; count[4]                               ; clk_8khz     ; clk_8khz    ; 1.000        ; 0.000      ; 7.400      ;
+; -9.300  ; count[3]                               ; count[4]                               ; clk_8khz     ; clk_8khz    ; 1.000        ; 0.000      ; 7.400      ;
+; -9.200  ; lpm_counter:mux_div_rtl_0|dffs[3]      ; lpm_counter:mux_div_rtl_0|dffs[4]      ; clk_8khz     ; clk_8khz    ; 1.000        ; 0.000      ; 7.300      ;
+; -9.100  ; btn_state                              ; lpm_counter:debounce_cnt_rtl_0|dffs[1] ; clk_8khz     ; clk_8khz    ; 1.000        ; 0.000      ; 7.200      ;
+; -9.100  ; btn_state                              ; lpm_counter:debounce_cnt_rtl_0|dffs[2] ; clk_8khz     ; clk_8khz    ; 1.000        ; 0.000      ; 7.200      ;
+; -9.100  ; btn_state                              ; lpm_counter:debounce_cnt_rtl_0|dffs[4] ; clk_8khz     ; clk_8khz    ; 1.000        ; 0.000      ; 7.200      ;
+; -9.100  ; btn_state                              ; lpm_counter:debounce_cnt_rtl_0|dffs[3] ; clk_8khz     ; clk_8khz    ; 1.000        ; 0.000      ; 7.200      ;
+; -9.100  ; lpm_counter:debounce_cnt_rtl_0|dffs[7] ; btn_state                              ; clk_8khz     ; clk_8khz    ; 1.000        ; 0.000      ; 7.200      ;
+; -9.100  ; lpm_counter:debounce_cnt_rtl_0|dffs[6] ; btn_state                              ; clk_8khz     ; clk_8khz    ; 1.000        ; 0.000      ; 7.200      ;
+; -9.100  ; lpm_counter:debounce_cnt_rtl_0|dffs[5] ; btn_state                              ; clk_8khz     ; clk_8khz    ; 1.000        ; 0.000      ; 7.200      ;
+; -9.100  ; lpm_counter:debounce_cnt_rtl_0|dffs[4] ; btn_state                              ; clk_8khz     ; clk_8khz    ; 1.000        ; 0.000      ; 7.200      ;
+; -9.100  ; lpm_counter:debounce_cnt_rtl_0|dffs[3] ; btn_state                              ; clk_8khz     ; clk_8khz    ; 1.000        ; 0.000      ; 7.200      ;
+; -9.100  ; lpm_counter:debounce_cnt_rtl_0|dffs[2] ; btn_state                              ; clk_8khz     ; clk_8khz    ; 1.000        ; 0.000      ; 7.200      ;
+; -9.100  ; lpm_counter:debounce_cnt_rtl_0|dffs[1] ; btn_state                              ; clk_8khz     ; clk_8khz    ; 1.000        ; 0.000      ; 7.200      ;
+; -9.100  ; lpm_counter:debounce_cnt_rtl_0|dffs[0] ; btn_state                              ; clk_8khz     ; clk_8khz    ; 1.000        ; 0.000      ; 7.200      ;
+; -9.100  ; btn_state                              ; btn_state                              ; clk_8khz     ; clk_8khz    ; 1.000        ; 0.000      ; 7.200      ;
+; -9.100  ; btn_state                              ; lpm_counter:debounce_cnt_rtl_0|dffs[0] ; clk_8khz     ; clk_8khz    ; 1.000        ; 0.000      ; 7.200      ;
+; -9.100  ; btn_state                              ; btn_prev                               ; clk_8khz     ; clk_8khz    ; 1.000        ; 0.000      ; 7.200      ;
+; -9.100  ; btn_state                              ; count[0]                               ; clk_8khz     ; clk_8khz    ; 1.000        ; 0.000      ; 7.200      ;
+; -9.100  ; btn_prev                               ; count[0]                               ; clk_8khz     ; clk_8khz    ; 1.000        ; 0.000      ; 7.200      ;
+; -9.100  ; btn_state                              ; count[1]                               ; clk_8khz     ; clk_8khz    ; 1.000        ; 0.000      ; 7.200      ;
+; -9.100  ; btn_prev                               ; count[1]                               ; clk_8khz     ; clk_8khz    ; 1.000        ; 0.000      ; 7.200      ;
+; -9.100  ; btn_state                              ; count[2]                               ; clk_8khz     ; clk_8khz    ; 1.000        ; 0.000      ; 7.200      ;
+; -9.100  ; btn_prev                               ; count[2]                               ; clk_8khz     ; clk_8khz    ; 1.000        ; 0.000      ; 7.200      ;
+; -9.100  ; btn_state                              ; count[3]                               ; clk_8khz     ; clk_8khz    ; 1.000        ; 0.000      ; 7.200      ;
+; -9.100  ; btn_prev                               ; count[3]                               ; clk_8khz     ; clk_8khz    ; 1.000        ; 0.000      ; 7.200      ;
+; -9.100  ; btn_state                              ; count[4]                               ; clk_8khz     ; clk_8khz    ; 1.000        ; 0.000      ; 7.200      ;
+; -9.100  ; btn_prev                               ; count[4]                               ; clk_8khz     ; clk_8khz    ; 1.000        ; 0.000      ; 7.200      ;
+; -9.000  ; lpm_counter:mux_div_rtl_0|dffs[0]      ; lpm_counter:mux_div_rtl_0|dffs[0]      ; clk_8khz     ; clk_8khz    ; 1.000        ; 0.000      ; 7.100      ;
+; -9.000  ; lpm_counter:mux_div_rtl_0|dffs[1]      ; lpm_counter:mux_div_rtl_0|dffs[1]      ; clk_8khz     ; clk_8khz    ; 1.000        ; 0.000      ; 7.100      ;
+; -9.000  ; lpm_counter:mux_div_rtl_0|dffs[0]      ; lpm_counter:mux_div_rtl_0|dffs[1]      ; clk_8khz     ; clk_8khz    ; 1.000        ; 0.000      ; 7.100      ;
+; -9.000  ; lpm_counter:mux_div_rtl_0|dffs[2]      ; lpm_counter:mux_div_rtl_0|dffs[2]      ; clk_8khz     ; clk_8khz    ; 1.000        ; 0.000      ; 7.100      ;
++---------+----------------------------------------+----------------------------------------+--------------+-------------+--------------+------------+------------+
 
 
-+------------------------------------------------------+
-; Minimum Propagation Delay                            ;
-+------------+-------------+----+--------+--------+----+
-; Input Port ; Output Port ; RR ; RF     ; FR     ; FF ;
-+------------+-------------+----+--------+--------+----+
-; test_in    ; test_out    ;    ; 10.000 ; 10.000 ;    ;
-+------------+-------------+----+--------+--------+----+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Hold: 'clk_8khz'                                                                                                                                              ;
++-------+----------------------------------------+----------------------------------------+--------------+-------------+--------------+------------+------------+
+; Slack ; From Node                              ; To Node                                ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
++-------+----------------------------------------+----------------------------------------+--------------+-------------+--------------+------------+------------+
+; 5.800 ; lpm_counter:mux_div_rtl_0|dffs[0]      ; lpm_counter:mux_div_rtl_0|dffs[0]      ; clk_8khz     ; clk_8khz    ; 0.000        ; 0.000      ; 7.100      ;
+; 5.800 ; lpm_counter:mux_div_rtl_0|dffs[1]      ; lpm_counter:mux_div_rtl_0|dffs[1]      ; clk_8khz     ; clk_8khz    ; 0.000        ; 0.000      ; 7.100      ;
+; 5.800 ; lpm_counter:mux_div_rtl_0|dffs[0]      ; lpm_counter:mux_div_rtl_0|dffs[1]      ; clk_8khz     ; clk_8khz    ; 0.000        ; 0.000      ; 7.100      ;
+; 5.800 ; lpm_counter:debounce_cnt_rtl_0|dffs[5] ; lpm_counter:debounce_cnt_rtl_0|dffs[5] ; clk_8khz     ; clk_8khz    ; 0.000        ; 0.000      ; 7.100      ;
+; 5.800 ; lpm_counter:debounce_cnt_rtl_0|dffs[6] ; lpm_counter:debounce_cnt_rtl_0|dffs[6] ; clk_8khz     ; clk_8khz    ; 0.000        ; 0.000      ; 7.100      ;
+; 5.800 ; lpm_counter:debounce_cnt_rtl_0|dffs[7] ; lpm_counter:debounce_cnt_rtl_0|dffs[7] ; clk_8khz     ; clk_8khz    ; 0.000        ; 0.000      ; 7.100      ;
+; 5.800 ; btn_state                              ; btn_state                              ; clk_8khz     ; clk_8khz    ; 0.000        ; 0.000      ; 7.100      ;
+; 5.800 ; lpm_counter:debounce_cnt_rtl_0|dffs[0] ; lpm_counter:debounce_cnt_rtl_0|dffs[0] ; clk_8khz     ; clk_8khz    ; 0.000        ; 0.000      ; 7.100      ;
+; 5.800 ; lpm_counter:mux_div_rtl_0|dffs[2]      ; lpm_counter:mux_div_rtl_0|dffs[2]      ; clk_8khz     ; clk_8khz    ; 0.000        ; 0.000      ; 7.100      ;
+; 5.800 ; lpm_counter:mux_div_rtl_0|dffs[1]      ; lpm_counter:mux_div_rtl_0|dffs[2]      ; clk_8khz     ; clk_8khz    ; 0.000        ; 0.000      ; 7.100      ;
+; 5.800 ; lpm_counter:mux_div_rtl_0|dffs[0]      ; lpm_counter:mux_div_rtl_0|dffs[2]      ; clk_8khz     ; clk_8khz    ; 0.000        ; 0.000      ; 7.100      ;
+; 5.800 ; lpm_counter:mux_div_rtl_0|dffs[3]      ; lpm_counter:mux_div_rtl_0|dffs[3]      ; clk_8khz     ; clk_8khz    ; 0.000        ; 0.000      ; 7.100      ;
+; 5.800 ; lpm_counter:mux_div_rtl_0|dffs[1]      ; lpm_counter:mux_div_rtl_0|dffs[3]      ; clk_8khz     ; clk_8khz    ; 0.000        ; 0.000      ; 7.100      ;
+; 5.800 ; lpm_counter:mux_div_rtl_0|dffs[0]      ; lpm_counter:mux_div_rtl_0|dffs[3]      ; clk_8khz     ; clk_8khz    ; 0.000        ; 0.000      ; 7.100      ;
+; 5.800 ; lpm_counter:mux_div_rtl_0|dffs[2]      ; lpm_counter:mux_div_rtl_0|dffs[3]      ; clk_8khz     ; clk_8khz    ; 0.000        ; 0.000      ; 7.100      ;
+; 5.800 ; lpm_counter:mux_div_rtl_0|dffs[4]      ; lpm_counter:mux_div_rtl_0|dffs[4]      ; clk_8khz     ; clk_8khz    ; 0.000        ; 0.000      ; 7.100      ;
+; 5.800 ; lpm_counter:mux_div_rtl_0|dffs[1]      ; lpm_counter:mux_div_rtl_0|dffs[4]      ; clk_8khz     ; clk_8khz    ; 0.000        ; 0.000      ; 7.100      ;
+; 5.800 ; lpm_counter:mux_div_rtl_0|dffs[0]      ; lpm_counter:mux_div_rtl_0|dffs[4]      ; clk_8khz     ; clk_8khz    ; 0.000        ; 0.000      ; 7.100      ;
+; 5.800 ; lpm_counter:mux_div_rtl_0|dffs[2]      ; lpm_counter:mux_div_rtl_0|dffs[4]      ; clk_8khz     ; clk_8khz    ; 0.000        ; 0.000      ; 7.100      ;
+; 5.800 ; count[0]                               ; count[0]                               ; clk_8khz     ; clk_8khz    ; 0.000        ; 0.000      ; 7.100      ;
+; 5.800 ; count[1]                               ; count[1]                               ; clk_8khz     ; clk_8khz    ; 0.000        ; 0.000      ; 7.100      ;
+; 5.800 ; count[2]                               ; count[2]                               ; clk_8khz     ; clk_8khz    ; 0.000        ; 0.000      ; 7.100      ;
+; 5.800 ; count[3]                               ; count[3]                               ; clk_8khz     ; clk_8khz    ; 0.000        ; 0.000      ; 7.100      ;
+; 5.800 ; count[4]                               ; count[4]                               ; clk_8khz     ; clk_8khz    ; 0.000        ; 0.000      ; 7.100      ;
+; 5.900 ; btn_state                              ; lpm_counter:debounce_cnt_rtl_0|dffs[1] ; clk_8khz     ; clk_8khz    ; 0.000        ; 0.000      ; 7.200      ;
+; 5.900 ; btn_state                              ; lpm_counter:debounce_cnt_rtl_0|dffs[2] ; clk_8khz     ; clk_8khz    ; 0.000        ; 0.000      ; 7.200      ;
+; 5.900 ; btn_state                              ; lpm_counter:debounce_cnt_rtl_0|dffs[4] ; clk_8khz     ; clk_8khz    ; 0.000        ; 0.000      ; 7.200      ;
+; 5.900 ; btn_state                              ; lpm_counter:debounce_cnt_rtl_0|dffs[3] ; clk_8khz     ; clk_8khz    ; 0.000        ; 0.000      ; 7.200      ;
+; 5.900 ; lpm_counter:debounce_cnt_rtl_0|dffs[1] ; lpm_counter:debounce_cnt_rtl_0|dffs[5] ; clk_8khz     ; clk_8khz    ; 0.000        ; 0.000      ; 7.200      ;
+; 5.900 ; lpm_counter:debounce_cnt_rtl_0|dffs[2] ; lpm_counter:debounce_cnt_rtl_0|dffs[5] ; clk_8khz     ; clk_8khz    ; 0.000        ; 0.000      ; 7.200      ;
+; 5.900 ; lpm_counter:debounce_cnt_rtl_0|dffs[3] ; lpm_counter:debounce_cnt_rtl_0|dffs[5] ; clk_8khz     ; clk_8khz    ; 0.000        ; 0.000      ; 7.200      ;
+; 5.900 ; lpm_counter:debounce_cnt_rtl_0|dffs[0] ; lpm_counter:debounce_cnt_rtl_0|dffs[5] ; clk_8khz     ; clk_8khz    ; 0.000        ; 0.000      ; 7.200      ;
+; 5.900 ; lpm_counter:debounce_cnt_rtl_0|dffs[4] ; lpm_counter:debounce_cnt_rtl_0|dffs[5] ; clk_8khz     ; clk_8khz    ; 0.000        ; 0.000      ; 7.200      ;
+; 5.900 ; btn_state                              ; lpm_counter:debounce_cnt_rtl_0|dffs[5] ; clk_8khz     ; clk_8khz    ; 0.000        ; 0.000      ; 7.200      ;
+; 5.900 ; lpm_counter:debounce_cnt_rtl_0|dffs[1] ; lpm_counter:debounce_cnt_rtl_0|dffs[6] ; clk_8khz     ; clk_8khz    ; 0.000        ; 0.000      ; 7.200      ;
+; 5.900 ; lpm_counter:debounce_cnt_rtl_0|dffs[2] ; lpm_counter:debounce_cnt_rtl_0|dffs[6] ; clk_8khz     ; clk_8khz    ; 0.000        ; 0.000      ; 7.200      ;
+; 5.900 ; lpm_counter:debounce_cnt_rtl_0|dffs[3] ; lpm_counter:debounce_cnt_rtl_0|dffs[6] ; clk_8khz     ; clk_8khz    ; 0.000        ; 0.000      ; 7.200      ;
+; 5.900 ; lpm_counter:debounce_cnt_rtl_0|dffs[4] ; lpm_counter:debounce_cnt_rtl_0|dffs[6] ; clk_8khz     ; clk_8khz    ; 0.000        ; 0.000      ; 7.200      ;
+; 5.900 ; lpm_counter:debounce_cnt_rtl_0|dffs[0] ; lpm_counter:debounce_cnt_rtl_0|dffs[6] ; clk_8khz     ; clk_8khz    ; 0.000        ; 0.000      ; 7.200      ;
+; 5.900 ; lpm_counter:debounce_cnt_rtl_0|dffs[5] ; lpm_counter:debounce_cnt_rtl_0|dffs[6] ; clk_8khz     ; clk_8khz    ; 0.000        ; 0.000      ; 7.200      ;
+; 5.900 ; btn_state                              ; lpm_counter:debounce_cnt_rtl_0|dffs[6] ; clk_8khz     ; clk_8khz    ; 0.000        ; 0.000      ; 7.200      ;
+; 5.900 ; btn_state                              ; lpm_counter:debounce_cnt_rtl_0|dffs[7] ; clk_8khz     ; clk_8khz    ; 0.000        ; 0.000      ; 7.200      ;
+; 5.900 ; lpm_counter:debounce_cnt_rtl_0|dffs[0] ; lpm_counter:debounce_cnt_rtl_0|dffs[7] ; clk_8khz     ; clk_8khz    ; 0.000        ; 0.000      ; 7.200      ;
+; 5.900 ; lpm_counter:debounce_cnt_rtl_0|dffs[6] ; lpm_counter:debounce_cnt_rtl_0|dffs[7] ; clk_8khz     ; clk_8khz    ; 0.000        ; 0.000      ; 7.200      ;
+; 5.900 ; lpm_counter:debounce_cnt_rtl_0|dffs[3] ; lpm_counter:debounce_cnt_rtl_0|dffs[7] ; clk_8khz     ; clk_8khz    ; 0.000        ; 0.000      ; 7.200      ;
+; 5.900 ; lpm_counter:debounce_cnt_rtl_0|dffs[5] ; lpm_counter:debounce_cnt_rtl_0|dffs[7] ; clk_8khz     ; clk_8khz    ; 0.000        ; 0.000      ; 7.200      ;
+; 5.900 ; lpm_counter:debounce_cnt_rtl_0|dffs[4] ; lpm_counter:debounce_cnt_rtl_0|dffs[7] ; clk_8khz     ; clk_8khz    ; 0.000        ; 0.000      ; 7.200      ;
+; 5.900 ; lpm_counter:debounce_cnt_rtl_0|dffs[2] ; lpm_counter:debounce_cnt_rtl_0|dffs[7] ; clk_8khz     ; clk_8khz    ; 0.000        ; 0.000      ; 7.200      ;
+; 5.900 ; lpm_counter:debounce_cnt_rtl_0|dffs[1] ; lpm_counter:debounce_cnt_rtl_0|dffs[7] ; clk_8khz     ; clk_8khz    ; 0.000        ; 0.000      ; 7.200      ;
+; 5.900 ; lpm_counter:debounce_cnt_rtl_0|dffs[7] ; btn_state                              ; clk_8khz     ; clk_8khz    ; 0.000        ; 0.000      ; 7.200      ;
+; 5.900 ; lpm_counter:debounce_cnt_rtl_0|dffs[6] ; btn_state                              ; clk_8khz     ; clk_8khz    ; 0.000        ; 0.000      ; 7.200      ;
+; 5.900 ; lpm_counter:debounce_cnt_rtl_0|dffs[5] ; btn_state                              ; clk_8khz     ; clk_8khz    ; 0.000        ; 0.000      ; 7.200      ;
+; 5.900 ; lpm_counter:debounce_cnt_rtl_0|dffs[4] ; btn_state                              ; clk_8khz     ; clk_8khz    ; 0.000        ; 0.000      ; 7.200      ;
+; 5.900 ; lpm_counter:debounce_cnt_rtl_0|dffs[3] ; btn_state                              ; clk_8khz     ; clk_8khz    ; 0.000        ; 0.000      ; 7.200      ;
+; 5.900 ; lpm_counter:debounce_cnt_rtl_0|dffs[2] ; btn_state                              ; clk_8khz     ; clk_8khz    ; 0.000        ; 0.000      ; 7.200      ;
+; 5.900 ; lpm_counter:debounce_cnt_rtl_0|dffs[1] ; btn_state                              ; clk_8khz     ; clk_8khz    ; 0.000        ; 0.000      ; 7.200      ;
+; 5.900 ; lpm_counter:debounce_cnt_rtl_0|dffs[0] ; btn_state                              ; clk_8khz     ; clk_8khz    ; 0.000        ; 0.000      ; 7.200      ;
+; 5.900 ; btn_state                              ; lpm_counter:debounce_cnt_rtl_0|dffs[0] ; clk_8khz     ; clk_8khz    ; 0.000        ; 0.000      ; 7.200      ;
+; 5.900 ; btn_state                              ; btn_prev                               ; clk_8khz     ; clk_8khz    ; 0.000        ; 0.000      ; 7.200      ;
+; 5.900 ; btn_state                              ; count[0]                               ; clk_8khz     ; clk_8khz    ; 0.000        ; 0.000      ; 7.200      ;
+; 5.900 ; btn_prev                               ; count[0]                               ; clk_8khz     ; clk_8khz    ; 0.000        ; 0.000      ; 7.200      ;
+; 5.900 ; btn_state                              ; count[1]                               ; clk_8khz     ; clk_8khz    ; 0.000        ; 0.000      ; 7.200      ;
+; 5.900 ; btn_prev                               ; count[1]                               ; clk_8khz     ; clk_8khz    ; 0.000        ; 0.000      ; 7.200      ;
+; 5.900 ; btn_state                              ; count[2]                               ; clk_8khz     ; clk_8khz    ; 0.000        ; 0.000      ; 7.200      ;
+; 5.900 ; btn_prev                               ; count[2]                               ; clk_8khz     ; clk_8khz    ; 0.000        ; 0.000      ; 7.200      ;
+; 5.900 ; btn_state                              ; count[3]                               ; clk_8khz     ; clk_8khz    ; 0.000        ; 0.000      ; 7.200      ;
+; 5.900 ; btn_prev                               ; count[3]                               ; clk_8khz     ; clk_8khz    ; 0.000        ; 0.000      ; 7.200      ;
+; 5.900 ; btn_state                              ; count[4]                               ; clk_8khz     ; clk_8khz    ; 0.000        ; 0.000      ; 7.200      ;
+; 5.900 ; btn_prev                               ; count[4]                               ; clk_8khz     ; clk_8khz    ; 0.000        ; 0.000      ; 7.200      ;
+; 6.000 ; lpm_counter:mux_div_rtl_0|dffs[3]      ; lpm_counter:mux_div_rtl_0|dffs[4]      ; clk_8khz     ; clk_8khz    ; 0.000        ; 0.000      ; 7.300      ;
+; 6.100 ; count[0]                               ; count[1]                               ; clk_8khz     ; clk_8khz    ; 0.000        ; 0.000      ; 7.400      ;
+; 6.100 ; count[0]                               ; count[2]                               ; clk_8khz     ; clk_8khz    ; 0.000        ; 0.000      ; 7.400      ;
+; 6.100 ; count[1]                               ; count[2]                               ; clk_8khz     ; clk_8khz    ; 0.000        ; 0.000      ; 7.400      ;
+; 6.100 ; count[1]                               ; count[3]                               ; clk_8khz     ; clk_8khz    ; 0.000        ; 0.000      ; 7.400      ;
+; 6.100 ; count[0]                               ; count[3]                               ; clk_8khz     ; clk_8khz    ; 0.000        ; 0.000      ; 7.400      ;
+; 6.100 ; count[2]                               ; count[3]                               ; clk_8khz     ; clk_8khz    ; 0.000        ; 0.000      ; 7.400      ;
+; 6.100 ; count[2]                               ; count[4]                               ; clk_8khz     ; clk_8khz    ; 0.000        ; 0.000      ; 7.400      ;
+; 6.100 ; count[1]                               ; count[4]                               ; clk_8khz     ; clk_8khz    ; 0.000        ; 0.000      ; 7.400      ;
+; 6.100 ; count[0]                               ; count[4]                               ; clk_8khz     ; clk_8khz    ; 0.000        ; 0.000      ; 7.400      ;
+; 6.100 ; count[3]                               ; count[4]                               ; clk_8khz     ; clk_8khz    ; 0.000        ; 0.000      ; 7.400      ;
+; 6.800 ; lpm_counter:debounce_cnt_rtl_0|dffs[7] ; lpm_counter:debounce_cnt_rtl_0|dffs[1] ; clk_8khz     ; clk_8khz    ; 0.000        ; 0.000      ; 8.100      ;
+; 6.800 ; lpm_counter:debounce_cnt_rtl_0|dffs[7] ; lpm_counter:debounce_cnt_rtl_0|dffs[2] ; clk_8khz     ; clk_8khz    ; 0.000        ; 0.000      ; 8.100      ;
+; 6.800 ; lpm_counter:debounce_cnt_rtl_0|dffs[3] ; lpm_counter:debounce_cnt_rtl_0|dffs[4] ; clk_8khz     ; clk_8khz    ; 0.000        ; 0.000      ; 8.100      ;
+; 6.800 ; lpm_counter:debounce_cnt_rtl_0|dffs[3] ; lpm_counter:debounce_cnt_rtl_0|dffs[3] ; clk_8khz     ; clk_8khz    ; 0.000        ; 0.000      ; 8.100      ;
+; 6.800 ; lpm_counter:debounce_cnt_rtl_0|dffs[7] ; lpm_counter:debounce_cnt_rtl_0|dffs[0] ; clk_8khz     ; clk_8khz    ; 0.000        ; 0.000      ; 8.100      ;
+; 6.800 ; lpm_counter:debounce_cnt_rtl_0|dffs[6] ; lpm_counter:debounce_cnt_rtl_0|dffs[1] ; clk_8khz     ; clk_8khz    ; 0.000        ; 0.000      ; 8.100      ;
+; 6.800 ; lpm_counter:debounce_cnt_rtl_0|dffs[5] ; lpm_counter:debounce_cnt_rtl_0|dffs[1] ; clk_8khz     ; clk_8khz    ; 0.000        ; 0.000      ; 8.100      ;
+; 6.800 ; lpm_counter:debounce_cnt_rtl_0|dffs[4] ; lpm_counter:debounce_cnt_rtl_0|dffs[1] ; clk_8khz     ; clk_8khz    ; 0.000        ; 0.000      ; 8.100      ;
+; 6.800 ; lpm_counter:debounce_cnt_rtl_0|dffs[3] ; lpm_counter:debounce_cnt_rtl_0|dffs[1] ; clk_8khz     ; clk_8khz    ; 0.000        ; 0.000      ; 8.100      ;
+; 6.800 ; lpm_counter:debounce_cnt_rtl_0|dffs[2] ; lpm_counter:debounce_cnt_rtl_0|dffs[1] ; clk_8khz     ; clk_8khz    ; 0.000        ; 0.000      ; 8.100      ;
+; 6.800 ; lpm_counter:debounce_cnt_rtl_0|dffs[0] ; lpm_counter:debounce_cnt_rtl_0|dffs[1] ; clk_8khz     ; clk_8khz    ; 0.000        ; 0.000      ; 8.100      ;
+; 6.800 ; lpm_counter:debounce_cnt_rtl_0|dffs[1] ; lpm_counter:debounce_cnt_rtl_0|dffs[1] ; clk_8khz     ; clk_8khz    ; 0.000        ; 0.000      ; 8.100      ;
+; 6.800 ; lpm_counter:debounce_cnt_rtl_0|dffs[6] ; lpm_counter:debounce_cnt_rtl_0|dffs[2] ; clk_8khz     ; clk_8khz    ; 0.000        ; 0.000      ; 8.100      ;
+; 6.800 ; lpm_counter:debounce_cnt_rtl_0|dffs[5] ; lpm_counter:debounce_cnt_rtl_0|dffs[2] ; clk_8khz     ; clk_8khz    ; 0.000        ; 0.000      ; 8.100      ;
+; 6.800 ; lpm_counter:debounce_cnt_rtl_0|dffs[4] ; lpm_counter:debounce_cnt_rtl_0|dffs[2] ; clk_8khz     ; clk_8khz    ; 0.000        ; 0.000      ; 8.100      ;
+; 6.800 ; lpm_counter:debounce_cnt_rtl_0|dffs[3] ; lpm_counter:debounce_cnt_rtl_0|dffs[2] ; clk_8khz     ; clk_8khz    ; 0.000        ; 0.000      ; 8.100      ;
+; 6.800 ; lpm_counter:debounce_cnt_rtl_0|dffs[0] ; lpm_counter:debounce_cnt_rtl_0|dffs[2] ; clk_8khz     ; clk_8khz    ; 0.000        ; 0.000      ; 8.100      ;
+; 6.800 ; lpm_counter:debounce_cnt_rtl_0|dffs[1] ; lpm_counter:debounce_cnt_rtl_0|dffs[2] ; clk_8khz     ; clk_8khz    ; 0.000        ; 0.000      ; 8.100      ;
+; 6.800 ; lpm_counter:debounce_cnt_rtl_0|dffs[2] ; lpm_counter:debounce_cnt_rtl_0|dffs[2] ; clk_8khz     ; clk_8khz    ; 0.000        ; 0.000      ; 8.100      ;
+; 6.800 ; lpm_counter:debounce_cnt_rtl_0|dffs[4] ; lpm_counter:debounce_cnt_rtl_0|dffs[4] ; clk_8khz     ; clk_8khz    ; 0.000        ; 0.000      ; 8.100      ;
++-------+----------------------------------------+----------------------------------------+--------------+-------------+--------------+------------+------------+
 
 
--------------------
-; Clock Transfers ;
--------------------
-Nothing to report.
++----------------------------------------------------------------------------------------------------------------------------+
+; Minimum Pulse Width: 'clk_8khz'                                                                                            ;
++--------+--------------+----------------+------------------+----------+------------+----------------------------------------+
+; Slack  ; Actual Width ; Required Width ; Type             ; Clock    ; Clock Edge ; Target                                 ;
++--------+--------------+----------------+------------------+----------+------------+----------------------------------------+
+; -3.500 ; 0.500        ; 4.000          ; High Pulse Width ; clk_8khz ; Rise       ; btn_prev                               ;
+; -3.500 ; 0.500        ; 4.000          ; Low Pulse Width  ; clk_8khz ; Rise       ; btn_prev                               ;
+; -3.500 ; 0.500        ; 4.000          ; High Pulse Width ; clk_8khz ; Rise       ; btn_state                              ;
+; -3.500 ; 0.500        ; 4.000          ; Low Pulse Width  ; clk_8khz ; Rise       ; btn_state                              ;
+; -3.500 ; 0.500        ; 4.000          ; High Pulse Width ; clk_8khz ; Rise       ; count[0]                               ;
+; -3.500 ; 0.500        ; 4.000          ; Low Pulse Width  ; clk_8khz ; Rise       ; count[0]                               ;
+; -3.500 ; 0.500        ; 4.000          ; High Pulse Width ; clk_8khz ; Rise       ; count[1]                               ;
+; -3.500 ; 0.500        ; 4.000          ; Low Pulse Width  ; clk_8khz ; Rise       ; count[1]                               ;
+; -3.500 ; 0.500        ; 4.000          ; High Pulse Width ; clk_8khz ; Rise       ; count[2]                               ;
+; -3.500 ; 0.500        ; 4.000          ; Low Pulse Width  ; clk_8khz ; Rise       ; count[2]                               ;
+; -3.500 ; 0.500        ; 4.000          ; High Pulse Width ; clk_8khz ; Rise       ; count[3]                               ;
+; -3.500 ; 0.500        ; 4.000          ; Low Pulse Width  ; clk_8khz ; Rise       ; count[3]                               ;
+; -3.500 ; 0.500        ; 4.000          ; High Pulse Width ; clk_8khz ; Rise       ; count[4]                               ;
+; -3.500 ; 0.500        ; 4.000          ; Low Pulse Width  ; clk_8khz ; Rise       ; count[4]                               ;
+; -3.500 ; 0.500        ; 4.000          ; High Pulse Width ; clk_8khz ; Rise       ; lpm_counter:debounce_cnt_rtl_0|dffs[0] ;
+; -3.500 ; 0.500        ; 4.000          ; Low Pulse Width  ; clk_8khz ; Rise       ; lpm_counter:debounce_cnt_rtl_0|dffs[0] ;
+; -3.500 ; 0.500        ; 4.000          ; High Pulse Width ; clk_8khz ; Rise       ; lpm_counter:debounce_cnt_rtl_0|dffs[1] ;
+; -3.500 ; 0.500        ; 4.000          ; Low Pulse Width  ; clk_8khz ; Rise       ; lpm_counter:debounce_cnt_rtl_0|dffs[1] ;
+; -3.500 ; 0.500        ; 4.000          ; High Pulse Width ; clk_8khz ; Rise       ; lpm_counter:debounce_cnt_rtl_0|dffs[2] ;
+; -3.500 ; 0.500        ; 4.000          ; Low Pulse Width  ; clk_8khz ; Rise       ; lpm_counter:debounce_cnt_rtl_0|dffs[2] ;
+; -3.500 ; 0.500        ; 4.000          ; High Pulse Width ; clk_8khz ; Rise       ; lpm_counter:debounce_cnt_rtl_0|dffs[3] ;
+; -3.500 ; 0.500        ; 4.000          ; Low Pulse Width  ; clk_8khz ; Rise       ; lpm_counter:debounce_cnt_rtl_0|dffs[3] ;
+; -3.500 ; 0.500        ; 4.000          ; High Pulse Width ; clk_8khz ; Rise       ; lpm_counter:debounce_cnt_rtl_0|dffs[4] ;
+; -3.500 ; 0.500        ; 4.000          ; Low Pulse Width  ; clk_8khz ; Rise       ; lpm_counter:debounce_cnt_rtl_0|dffs[4] ;
+; -3.500 ; 0.500        ; 4.000          ; High Pulse Width ; clk_8khz ; Rise       ; lpm_counter:debounce_cnt_rtl_0|dffs[5] ;
+; -3.500 ; 0.500        ; 4.000          ; Low Pulse Width  ; clk_8khz ; Rise       ; lpm_counter:debounce_cnt_rtl_0|dffs[5] ;
+; -3.500 ; 0.500        ; 4.000          ; High Pulse Width ; clk_8khz ; Rise       ; lpm_counter:debounce_cnt_rtl_0|dffs[6] ;
+; -3.500 ; 0.500        ; 4.000          ; Low Pulse Width  ; clk_8khz ; Rise       ; lpm_counter:debounce_cnt_rtl_0|dffs[6] ;
+; -3.500 ; 0.500        ; 4.000          ; High Pulse Width ; clk_8khz ; Rise       ; lpm_counter:debounce_cnt_rtl_0|dffs[7] ;
+; -3.500 ; 0.500        ; 4.000          ; Low Pulse Width  ; clk_8khz ; Rise       ; lpm_counter:debounce_cnt_rtl_0|dffs[7] ;
+; -3.500 ; 0.500        ; 4.000          ; High Pulse Width ; clk_8khz ; Rise       ; lpm_counter:mux_div_rtl_0|dffs[0]      ;
+; -3.500 ; 0.500        ; 4.000          ; Low Pulse Width  ; clk_8khz ; Rise       ; lpm_counter:mux_div_rtl_0|dffs[0]      ;
+; -3.500 ; 0.500        ; 4.000          ; High Pulse Width ; clk_8khz ; Rise       ; lpm_counter:mux_div_rtl_0|dffs[1]      ;
+; -3.500 ; 0.500        ; 4.000          ; Low Pulse Width  ; clk_8khz ; Rise       ; lpm_counter:mux_div_rtl_0|dffs[1]      ;
+; -3.500 ; 0.500        ; 4.000          ; High Pulse Width ; clk_8khz ; Rise       ; lpm_counter:mux_div_rtl_0|dffs[2]      ;
+; -3.500 ; 0.500        ; 4.000          ; Low Pulse Width  ; clk_8khz ; Rise       ; lpm_counter:mux_div_rtl_0|dffs[2]      ;
+; -3.500 ; 0.500        ; 4.000          ; High Pulse Width ; clk_8khz ; Rise       ; lpm_counter:mux_div_rtl_0|dffs[3]      ;
+; -3.500 ; 0.500        ; 4.000          ; Low Pulse Width  ; clk_8khz ; Rise       ; lpm_counter:mux_div_rtl_0|dffs[3]      ;
+; -3.500 ; 0.500        ; 4.000          ; High Pulse Width ; clk_8khz ; Rise       ; lpm_counter:mux_div_rtl_0|dffs[4]      ;
+; -3.500 ; 0.500        ; 4.000          ; Low Pulse Width  ; clk_8khz ; Rise       ; lpm_counter:mux_div_rtl_0|dffs[4]      ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; clk_8khz ; Rise       ; btn_prev|[1]                           ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; clk_8khz ; Rise       ; btn_prev|[1]                           ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; clk_8khz ; Rise       ; btn_state|[12]                         ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; clk_8khz ; Rise       ; btn_state|[12]                         ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; clk_8khz ; Rise       ; clk_8khz|dataout                       ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; clk_8khz ; Rise       ; clk_8khz|dataout                       ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; clk_8khz ; Rise       ; count[0]|[5]                           ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; clk_8khz ; Rise       ; count[0]|[5]                           ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; clk_8khz ; Rise       ; count[1]|[6]                           ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; clk_8khz ; Rise       ; count[1]|[6]                           ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; clk_8khz ; Rise       ; count[2]|[7]                           ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; clk_8khz ; Rise       ; count[2]|[7]                           ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; clk_8khz ; Rise       ; count[3]|[8]                           ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; clk_8khz ; Rise       ; count[3]|[8]                           ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; clk_8khz ; Rise       ; count[4]|[9]                           ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; clk_8khz ; Rise       ; count[4]|[9]                           ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; clk_8khz ; Rise       ; debounce_cnt_rtl_0|dffs[0]|[5]         ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; clk_8khz ; Rise       ; debounce_cnt_rtl_0|dffs[0]|[5]         ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; clk_8khz ; Rise       ; debounce_cnt_rtl_0|dffs[1]|[3]         ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; clk_8khz ; Rise       ; debounce_cnt_rtl_0|dffs[1]|[3]         ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; clk_8khz ; Rise       ; debounce_cnt_rtl_0|dffs[2]|[2]         ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; clk_8khz ; Rise       ; debounce_cnt_rtl_0|dffs[2]|[2]         ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; clk_8khz ; Rise       ; debounce_cnt_rtl_0|dffs[3]|[0]         ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; clk_8khz ; Rise       ; debounce_cnt_rtl_0|dffs[3]|[0]         ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; clk_8khz ; Rise       ; debounce_cnt_rtl_0|dffs[4]|[0]         ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; clk_8khz ; Rise       ; debounce_cnt_rtl_0|dffs[4]|[0]         ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; clk_8khz ; Rise       ; debounce_cnt_rtl_0|dffs[5]|[10]        ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; clk_8khz ; Rise       ; debounce_cnt_rtl_0|dffs[5]|[10]        ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; clk_8khz ; Rise       ; debounce_cnt_rtl_0|dffs[6]|[11]        ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; clk_8khz ; Rise       ; debounce_cnt_rtl_0|dffs[6]|[11]        ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; clk_8khz ; Rise       ; debounce_cnt_rtl_0|dffs[7]|[11]        ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; clk_8khz ; Rise       ; debounce_cnt_rtl_0|dffs[7]|[11]        ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; clk_8khz ; Rise       ; mux_div_rtl_0|dffs[0]|[0]              ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; clk_8khz ; Rise       ; mux_div_rtl_0|dffs[0]|[0]              ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; clk_8khz ; Rise       ; mux_div_rtl_0|dffs[1]|[1]              ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; clk_8khz ; Rise       ; mux_div_rtl_0|dffs[1]|[1]              ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; clk_8khz ; Rise       ; mux_div_rtl_0|dffs[2]|[2]              ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; clk_8khz ; Rise       ; mux_div_rtl_0|dffs[2]|[2]              ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; clk_8khz ; Rise       ; mux_div_rtl_0|dffs[3]|[3]              ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; clk_8khz ; Rise       ; mux_div_rtl_0|dffs[3]|[3]              ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; clk_8khz ; Rise       ; mux_div_rtl_0|dffs[4]|[4]              ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; clk_8khz ; Rise       ; mux_div_rtl_0|dffs[4]|[4]              ;
++--------+--------------+----------------+------------------+----------+------------+----------------------------------------+
+
+
++-----------------------------------------------------------------------+
+; Setup Times                                                           ;
++-----------+------------+-------+-------+------------+-----------------+
+; Data Port ; Clock Port ; Rise  ; Fall  ; Clock Edge ; Clock Reference ;
++-----------+------------+-------+-------+------------+-----------------+
+; btn1      ; clk_8khz   ; 4.500 ; 4.500 ; Rise       ; clk_8khz        ;
+; btn2      ; clk_8khz   ; 4.500 ; 4.500 ; Rise       ; clk_8khz        ;
+; btn4      ; clk_8khz   ; 4.500 ; 4.500 ; Rise       ; clk_8khz        ;
++-----------+------------+-------+-------+------------+-----------------+
+
+
++-----------------------------------------------------------------------+
+; Hold Times                                                            ;
++-----------+------------+-------+-------+------------+-----------------+
+; Data Port ; Clock Port ; Rise  ; Fall  ; Clock Edge ; Clock Reference ;
++-----------+------------+-------+-------+------------+-----------------+
+; btn1      ; clk_8khz   ; 0.600 ; 0.600 ; Rise       ; clk_8khz        ;
+; btn2      ; clk_8khz   ; 0.600 ; 0.600 ; Rise       ; clk_8khz        ;
+; btn4      ; clk_8khz   ; 0.600 ; 0.600 ; Rise       ; clk_8khz        ;
++-----------+------------+-------+-------+------------+-----------------+
+
+
++-------------------------------------------------------------------------+
+; Clock to Output Times                                                   ;
++-----------+------------+--------+--------+------------+-----------------+
+; Data Port ; Clock Port ; Rise   ; Fall   ; Clock Edge ; Clock Reference ;
++-----------+------------+--------+--------+------------+-----------------+
+; com1      ; clk_8khz   ; 16.700 ; 16.700 ; Rise       ; clk_8khz        ;
+; com2      ; clk_8khz   ; 16.700 ; 16.700 ; Rise       ; clk_8khz        ;
+; com3      ; clk_8khz   ; 16.700 ; 16.700 ; Rise       ; clk_8khz        ;
+; com4      ; clk_8khz   ; 16.700 ; 16.700 ; Rise       ; clk_8khz        ;
+; mcu_28    ; clk_8khz   ; 9.700  ; 9.700  ; Rise       ; clk_8khz        ;
+; mcu_29    ; clk_8khz   ; 9.700  ; 9.700  ; Rise       ; clk_8khz        ;
+; mcu_31    ; clk_8khz   ; 9.700  ; 9.700  ; Rise       ; clk_8khz        ;
+; mcu_34    ; clk_8khz   ; 9.700  ; 9.700  ; Rise       ; clk_8khz        ;
+; mcu_37    ; clk_8khz   ; 9.700  ; 9.700  ; Rise       ; clk_8khz        ;
+; seg_a     ; clk_8khz   ; 18.600 ; 18.600 ; Rise       ; clk_8khz        ;
+; seg_b     ; clk_8khz   ; 17.700 ; 17.700 ; Rise       ; clk_8khz        ;
+; seg_c     ; clk_8khz   ; 23.600 ; 23.600 ; Rise       ; clk_8khz        ;
+; seg_d     ; clk_8khz   ; 23.600 ; 23.600 ; Rise       ; clk_8khz        ;
+; seg_e     ; clk_8khz   ; 17.700 ; 17.700 ; Rise       ; clk_8khz        ;
+; seg_f     ; clk_8khz   ; 23.600 ; 23.600 ; Rise       ; clk_8khz        ;
+; seg_g     ; clk_8khz   ; 17.700 ; 17.700 ; Rise       ; clk_8khz        ;
++-----------+------------+--------+--------+------------+-----------------+
+
+
++-------------------------------------------------------------------------+
+; Minimum Clock to Output Times                                           ;
++-----------+------------+--------+--------+------------+-----------------+
+; Data Port ; Clock Port ; Rise   ; Fall   ; Clock Edge ; Clock Reference ;
++-----------+------------+--------+--------+------------+-----------------+
+; com1      ; clk_8khz   ; 16.600 ; 16.600 ; Rise       ; clk_8khz        ;
+; com2      ; clk_8khz   ; 16.600 ; 16.600 ; Rise       ; clk_8khz        ;
+; com3      ; clk_8khz   ; 16.600 ; 16.600 ; Rise       ; clk_8khz        ;
+; com4      ; clk_8khz   ; 16.600 ; 16.600 ; Rise       ; clk_8khz        ;
+; mcu_28    ; clk_8khz   ; 9.700  ; 9.700  ; Rise       ; clk_8khz        ;
+; mcu_29    ; clk_8khz   ; 9.700  ; 9.700  ; Rise       ; clk_8khz        ;
+; mcu_31    ; clk_8khz   ; 9.700  ; 9.700  ; Rise       ; clk_8khz        ;
+; mcu_34    ; clk_8khz   ; 9.700  ; 9.700  ; Rise       ; clk_8khz        ;
+; mcu_37    ; clk_8khz   ; 9.700  ; 9.700  ; Rise       ; clk_8khz        ;
+; seg_a     ; clk_8khz   ; 16.700 ; 16.700 ; Rise       ; clk_8khz        ;
+; seg_b     ; clk_8khz   ; 16.700 ; 16.700 ; Rise       ; clk_8khz        ;
+; seg_c     ; clk_8khz   ; 16.600 ; 16.600 ; Rise       ; clk_8khz        ;
+; seg_d     ; clk_8khz   ; 16.600 ; 16.600 ; Rise       ; clk_8khz        ;
+; seg_e     ; clk_8khz   ; 16.600 ; 16.600 ; Rise       ; clk_8khz        ;
+; seg_f     ; clk_8khz   ; 16.600 ; 16.600 ; Rise       ; clk_8khz        ;
+; seg_g     ; clk_8khz   ; 16.600 ; 16.600 ; Rise       ; clk_8khz        ;
++-----------+------------+--------+--------+------------+-----------------+
+
+
++-------------------------------------------------------------------+
+; Setup Transfers                                                   ;
++------------+----------+----------+----------+----------+----------+
+; From Clock ; To Clock ; RR Paths ; FR Paths ; RF Paths ; FF Paths ;
++------------+----------+----------+----------+----------+----------+
+; clk_8khz   ; clk_8khz ; 346      ; 0        ; 0        ; 0        ;
++------------+----------+----------+----------+----------+----------+
+Entries labeled "false path" only account for clock-to-clock false paths and not path-based false paths. As a result, actual path counts may be lower than reported.
+
+
++-------------------------------------------------------------------+
+; Hold Transfers                                                    ;
++------------+----------+----------+----------+----------+----------+
+; From Clock ; To Clock ; RR Paths ; FR Paths ; RF Paths ; FF Paths ;
++------------+----------+----------+----------+----------+----------+
+; clk_8khz   ; clk_8khz ; 346      ; 0        ; 0        ; 0        ;
++------------+----------+----------+----------+----------+----------+
+Entries labeled "false path" only account for clock-to-clock false paths and not path-based false paths. As a result, actual path counts may be lower than reported.
 
 
 ---------------
@@ -154,10 +548,10 @@ No dedicated SERDES Receiver circuitry present in device or used in design
 +---------------------------------+-------+------+
 ; Illegal Clocks                  ; 0     ; 0    ;
 ; Unconstrained Clocks            ; 0     ; 0    ;
-; Unconstrained Input Ports       ; 1     ; 1    ;
-; Unconstrained Input Port Paths  ; 1     ; 1    ;
-; Unconstrained Output Ports      ; 1     ; 1    ;
-; Unconstrained Output Port Paths ; 1     ; 1    ;
+; Unconstrained Input Ports       ; 3     ; 3    ;
+; Unconstrained Input Port Paths  ; 42    ; 42   ;
+; Unconstrained Output Ports      ; 16    ; 16   ;
+; Unconstrained Output Port Paths ; 62    ; 62   ;
 +---------------------------------+-------+------+
 
 
@@ -167,7 +561,7 @@ No dedicated SERDES Receiver circuitry present in device or used in design
 Info: *******************************************************************
 Info: Running Quartus II 32-bit TimeQuest Timing Analyzer
     Info: Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
-    Info: Processing started: Tue Feb 24 11:42:52 2026
+    Info: Processing started: Sat Mar 07 02:28:39 2026
 Info: Command: quartus_sta CPLD -c CPLD
 Info: qsta_default_script.tcl version: #1
 Warning (20028): Parallel compilation is not licensed and has been disabled
@@ -176,23 +570,31 @@ Info (306005): Delay annotation completed successfully
 Warning (335095): TimeQuest Timing Analyzer does not support the analysis of latches as synchronous elements for the currently selected device family.
 Critical Warning (332012): Synopsys Design Constraints File file not found: 'CPLD.sdc'. A Synopsys Design Constraints File is required by the TimeQuest Timing Analyzer to get proper timing constraints. Without it, the Compiler will not properly optimize the design.
 Info (332142): No user constrained base clocks found in the design. Calling "derive_clocks -period 1.0"
-Info (332096): The command derive_clocks did not find any clocks to derive.  No clocks were created or changed.
-Warning (332068): No clocks defined in design.
+Info (332105): Deriving Clocks
+    Info (332105): create_clock -period 1.000 -name clk_8khz clk_8khz
 Info: Found TIMEQUEST_REPORT_SCRIPT_INCLUDE_DEFAULT_ANALYSIS = ON
-Info (332159): No clocks to report
-Info (332140): No fmax paths to report
-Info (332140): No Setup paths to report
-Info (332140): No Hold paths to report
+Critical Warning (332148): Timing requirements not met
+Info (332146): Worst-case setup slack is -10.900
+    Info (332119):     Slack End Point TNS Clock 
+    Info (332119): ========= ============= =====================
+    Info (332119):   -10.900      -191.500 clk_8khz 
+Info (332146): Worst-case hold slack is 5.800
+    Info (332119):     Slack End Point TNS Clock 
+    Info (332119): ========= ============= =====================
+    Info (332119):     5.800         0.000 clk_8khz 
 Info (332140): No Recovery paths to report
 Info (332140): No Removal paths to report
-Info (332140): No Minimum Pulse Width paths to report
+Info (332146): Worst-case minimum pulse width slack is -3.500
+    Info (332119):     Slack End Point TNS Clock 
+    Info (332119): ========= ============= =====================
+    Info (332119):    -3.500      -140.000 clk_8khz 
 Info (332001): The selected device family is not supported by the report_metastability command.
 Info (332102): Design is not fully constrained for setup requirements
 Info (332102): Design is not fully constrained for hold requirements
 Info: Quartus II 32-bit TimeQuest Timing Analyzer was successful. 0 errors, 4 warnings
-    Info: Peak virtual memory: 326 megabytes
-    Info: Processing ended: Tue Feb 24 11:42:53 2026
-    Info: Elapsed time: 00:00:01
+    Info: Peak virtual memory: 318 megabytes
+    Info: Processing ended: Sat Mar 07 02:28:39 2026
+    Info: Elapsed time: 00:00:00
     Info: Total CPU time (on all processors): 00:00:01
 
 

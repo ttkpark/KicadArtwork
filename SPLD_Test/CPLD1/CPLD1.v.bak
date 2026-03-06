@@ -1,0 +1,8 @@
+module cpld_top (
+    // Absolutely NO pins declared.
+    // This is a dummy project to test the JTAG programming process.
+);
+
+    // Empty logic
+
+endmodule

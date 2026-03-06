@@ -1,0 +1,4 @@
+|CPLD1
+test_out <= <VCC>
+
+

@@ -1,5 +1,6 @@
 <?xml version="1.0" ?>
 <LOG_ROOT>
 	<PROJECT NAME="CPLD">
+		<CBX_INST_ENTRY INSTANCE_NAME="|CPLD|lpm_add_sub:Add1" CBX_FILE_NAME="add_sub_8ch.tdf"/>
 	</PROJECT>
 </LOG_ROOT>
