@@ -5,4 +5,5 @@
   (lib (name "2026-02-13_16-55-40")(type "KiCad")(uri "C:/Users/parkg/Desktop/KicadArtwork/ul_EPM3064ALC44-10/KiCADv6/2026-02-13_16-55-40.kicad_sym")(options "")(descr ""))
   (lib (name "2026-02-13_17-00-08")(type "KiCad")(uri "C:/Users/parkg/Desktop/KicadArtwork/ul_EPM3064ALC44-10N/KiCADv6/2026-02-13_17-00-08.kicad_sym")(options "")(descr ""))
   (lib (name "223232")(type "KiCad")(uri "C:/Users/parkg/Desktop/KicadArtwork/ul_SK12D07VG4NSPA/KiCADv6/2026-01-25_02-57-53.bak")(options "")(descr ""))
+  (lib (name "ul_EPM3064ALC44-10N")(type "KiCad")(uri "C:/Users/GH/Desktop/KicadArtwork/ul_EPM3064ALC44-10N/KiCADv6/ul_EPM3064ALC44-10N.kicad_sym")(options "")(descr ""))
 )
